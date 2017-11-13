@@ -4,16 +4,16 @@ import {
     View,
     StyleSheet} from 'react-native';
 
-const UserProfile = () => {
+const Team = () => {
     const { title, viewStyle } = styles;
     return (
         <View style={viewStyle}>
-            <Text style={title}>Profile</Text>
+            <Text style={title}>Team</Text>
         </View>
     );
 };
 
-export default UserProfile;
+export default Team;
 
 const styles = StyleSheet.create({
     title: {
