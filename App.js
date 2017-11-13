@@ -11,7 +11,7 @@ import {
     View
 } from 'react-native';
 
-import Title from './src/LandingPage/components/landingOutline';
+import Title from './src/landingPage/components/LandingOutline';
 
 
 const instructions = Platform.select({
