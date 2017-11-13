@@ -32,7 +32,6 @@ export default class LoginForm extends Component {
                         value={this.state.password}
                     />
                     <Button
-                        style={styles.thisBtn}
                         onPress={printThing = () => {
                             alert("This does nothing")
                         }}
@@ -46,25 +45,6 @@ export default class LoginForm extends Component {
 }
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 40,
-        textAlign: 'center',
-        color: 'black',
-        width: '40%',
-        // backgroundColor: 'orange'
-    },
-    viewStyle: {
-        height: '12%',
-        marginTop: '40%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: 'red',
-        // shadowColor: '#ff0000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        elevation: 3,
-        position: 'relative'
-    },
     signInForm: {
         height: 40,
         borderColor: 'black',
@@ -75,11 +55,6 @@ const styles = StyleSheet.create({
     signInFormCont: {
         height: '30%',
         marginTop: '15%',
-    },
-    thisBtn: {
-        height: '100%',
-        backgroundColor: 'black',
-        marginTop: '30%'
     }
 });
 

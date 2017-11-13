@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     viewStyle: {
         height: '12%',
-        marginTop: '40%',
+        marginTop: '37%',
         justifyContent: 'center',
         alignItems: 'center',
         // backgroundColor: 'red',
