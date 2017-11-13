@@ -7,15 +7,11 @@ import {
     StyleSheet
 } from 'react-native';
 
+import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
+
 export default class Title extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: 'Username',
-            password: 'Password'
-        };
-    }
 
     render() {
         return (
@@ -23,26 +19,8 @@ export default class Title extends Component {
                 <View style={styles.viewStyle}>
                     <Text style={styles.title}>Validus</Text>
                 </View>
-                <View style={styles.signInFormCont}>
-                    <TextInput
-                        style={styles.signInForm}
-                        onChangeText={(text) => this.setState({text})}
-                        value={this.state.username}
-                    />
-                    <TextInput
-                        style={styles.signInForm}
-                        onChangeText={(text) => this.setState({text})}
-                        value={this.state.password}
-                    />
-                    <Button
-                        style={styles.thisBtn}
-                        onPress={printThing = () => {
-                            alert("This does nothing")
-                        }}
-                        title="Submit"
-                        color='black'
-                    />
-                </View>
+                <LoginForm/>
+                <SignUpForm/>
             </View>
         );
     }
@@ -68,22 +46,6 @@ const styles = StyleSheet.create({
         elevation: 3,
         position: 'relative'
     },
-    signInForm: {
-        height: 40,
-        borderColor: 'black',
-        // backgroundColor: 'white',
-        borderWidth: 1,
-        marginTop: '5%'
-    },
-    signInFormCont: {
-        height: '30%',
-        marginTop: '15%',
-    },
-    thisBtn: {
-        height: '100%',
-        backgroundColor: 'black',
-        marginTop: '30%'
-    }
 });
 
 
