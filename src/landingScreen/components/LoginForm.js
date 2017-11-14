@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     TextInput,
     Text,
@@ -6,6 +6,7 @@ import {
     Button,
     StyleSheet
 } from 'react-native';
+
 
 export default class LoginForm extends Component {
 
@@ -43,6 +44,7 @@ export default class LoginForm extends Component {
         );
     }
 }
+
 
 const styles = StyleSheet.create({
     signInForm: {

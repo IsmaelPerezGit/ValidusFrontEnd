@@ -4,8 +4,10 @@ import {
     Text,
     View,
     Button,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native';
+
 
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
@@ -16,6 +18,7 @@ export default class Title extends Component {
     render() {
         return (
             <View>
+                <Image style={styles.imagething} source={{uri: '/Users/ismaelperez/Workspace/Javascript/ValidusProject/ValidusFrontEnd/src/assets/images/ValidusBikeBg.jpeg'}}/>
                 <View style={styles.viewStyle}>
                     <Text style={styles.title}>Validus</Text>
                 </View>
@@ -31,13 +34,13 @@ const styles = StyleSheet.create({
         fontSize: 40,
         // height: '30%',
         textAlign: 'center',
-        color: 'black',
+        color: '#b21726',
         width: '40%',
         // backgroundColor: 'orange'
     },
     viewStyle: {
-        backgroundColor: '#222222',
-        height: '35%',
+        backgroundColor: 'black',
+        height: '20%',
         marginTop: '0%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -48,6 +51,9 @@ const styles = StyleSheet.create({
         elevation: 3,
         position: 'relative'
     },
+    imagething: {
+        height: '12%'
+    }
 });
 
 

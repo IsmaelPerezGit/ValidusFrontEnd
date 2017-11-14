@@ -12,8 +12,7 @@ import {
     Image
 } from 'react-native';
 
-import Title from './src/landingPage/components/LandingOutline';
-
+import Title from './src/landingScreen/components/LandingOutline';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
