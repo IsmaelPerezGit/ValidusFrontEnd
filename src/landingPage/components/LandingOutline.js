@@ -29,14 +29,16 @@ export default class Title extends Component {
 const styles = StyleSheet.create({
     title: {
         fontSize: 40,
+        // height: '30%',
         textAlign: 'center',
         color: 'black',
         width: '40%',
         // backgroundColor: 'orange'
     },
     viewStyle: {
-        height: '12%',
-        marginTop: '37%',
+        backgroundColor: '#222222',
+        height: '35%',
+        marginTop: '0%',
         justifyContent: 'center',
         alignItems: 'center',
         // backgroundColor: 'red',

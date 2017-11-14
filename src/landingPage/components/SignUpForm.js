@@ -17,7 +17,7 @@ export default SignUpForm = () => {
                     alert("This does nothing")
                 }}
                 title="Sign Up"
-                color='black'
+                color='silver'
             />
         </View>
     );
@@ -32,6 +32,9 @@ const styles = StyleSheet.create({
         elevation: 3,
         position: 'relative'
     },
+    text: {
+        color: 'silver'
+    }
 });
 
 

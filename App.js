@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 import {
     Platform,
     StyleSheet,
-    View
+    View,
+    Image
 } from 'react-native';
 
 import Title from './src/landingPage/components/LandingOutline';
@@ -37,6 +38,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#222222',
+    backgroundColor: 'black'
   },
 });

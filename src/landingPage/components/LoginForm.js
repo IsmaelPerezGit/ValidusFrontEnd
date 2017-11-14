@@ -36,7 +36,7 @@ export default class LoginForm extends Component {
                             alert("This does nothing")
                         }}
                         title="Submit"
-                        color='black'
+                        color='silver'
                     />
                 </View>
             </View>
@@ -47,14 +47,17 @@ export default class LoginForm extends Component {
 const styles = StyleSheet.create({
     signInForm: {
         height: 40,
+        width: '85%',
         borderColor: 'black',
-        // backgroundColor: 'white',
+        backgroundColor: '#222222',
         borderWidth: 1,
-        marginTop: '5%'
+        marginTop: '5%',
+        color: 'silver'
     },
     signInFormCont: {
         height: '30%',
         marginTop: '15%',
+        alignItems: 'center'
     }
 });
 
