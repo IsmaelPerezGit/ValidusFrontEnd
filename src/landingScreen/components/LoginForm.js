@@ -13,8 +13,8 @@ export default class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'Username',
-            password: 'Password'
+            username: '  Username',
+            password: '  Password'
         };
     }
 
@@ -54,13 +54,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#222222',
         borderWidth: 1,
         marginTop: '5%',
-        color: 'silver'
+        color: 'silver',
+        borderRadius:10,
+        alignItems:'center'
     },
     signInFormCont: {
         height: '30%',
         marginTop: '15%',
         alignItems: 'center'
-    }
+    },
 });
 
 

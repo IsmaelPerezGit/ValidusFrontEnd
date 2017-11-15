@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
     Text,
     View,
-    Button,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
 
@@ -12,14 +12,14 @@ export default SignUpForm = () => {
     return (
         <View style={styles.viewStyle}>
             <Text style={styles.text}>Not A Member?</Text>
-            <Button
-                style={styles.thisBtn}
+            <TouchableOpacity
+                style={styles.signUpButton}
                 onPress={printThing = () => {
                     alert("This does nothing")
                 }}
-                title="Sign Up"
+                // title="Sign Up"
                 color='silver'
-            />
+            ><Text style={styles.signUpText}>Sign Up</Text></TouchableOpacity>
         </View>
     );
 }
@@ -35,6 +35,21 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'silver'
+    },
+    signUpButton: {
+        backgroundColor: '#222222',
+        width:'50%',
+        flex: 1,
+        borderWidth:1,
+        borderRadius:20,
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop:10
+    },
+    signUpText: {
+        color:'silver',
+        fontWeight:'600',
+        fontSize: 16,
     }
 });
 
