@@ -6,9 +6,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-
 export default SignUpForm = () => {
-
     return (
         <View style={styles.viewStyle}>
             <Text style={styles.title}>Choose your fate</Text>
@@ -42,20 +40,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         elevation: 3,
         position: 'relative',
-
     },
     title: {
         fontSize: 40,
         textAlign: 'center',
         color: '#b21726',
-        width: '40%',
-
+        width: '70%',
     },
     btnCont: {
-        height:'30%',
+        height: '30%',
         flexDirection: 'row',
         width: '100%',
-        marginTop:'10%'
+        marginTop: '10%'
     },
     signUpButton: {
         backgroundColor: '#222222',
@@ -66,8 +62,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 10,
-        marginLeft:13,
-        marginRight:13,
+        marginLeft: 13,
+        marginRight: 13,
     },
     signUpText: {
         color: 'silver',
