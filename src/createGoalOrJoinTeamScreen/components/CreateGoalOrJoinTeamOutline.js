@@ -4,7 +4,7 @@ import {
     View,
     StyleSheet} from 'react-native';
 
-const CreatGoalOrJoin = () => {
+const CreateGoalOrJoin = () => {
     const { title, viewStyle } = styles;
     return (
         <View style={viewStyle}>
@@ -13,7 +13,7 @@ const CreatGoalOrJoin = () => {
     );
 };
 
-export default CreatGoalOrJoin;
+export default CreateGoalOrJoin;
 
 const styles = StyleSheet.create({
     title: {

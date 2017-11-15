@@ -4,7 +4,7 @@ import {
     View,
     StyleSheet} from 'react-native';
 
-const Title = () => {
+const Team = () => {
     const { title, viewStyle } = styles;
     return (
         <View style={viewStyle}>
@@ -13,7 +13,7 @@ const Title = () => {
     );
 };
 
-export default Title;
+export default Team;
 
 const styles = StyleSheet.create({
     title: {
