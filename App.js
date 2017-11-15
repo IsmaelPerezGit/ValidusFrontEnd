@@ -8,7 +8,7 @@ import RouterComponent from './src/Router';
 
 import Title from './src/landingScreen/components/LandingOutline';
 
-export default class App extends Component<{}> {
+export default class App extends Component {
   render() {
     return (
       //<View style={ styles.container }>

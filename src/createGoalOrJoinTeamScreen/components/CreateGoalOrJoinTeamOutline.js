@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Text,
     View,
@@ -6,7 +6,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-export default SignUpForm = () => {
+export default CreateGoalOrJoin = () => {
     return (
         <View style={styles.viewStyle}>
             <Text style={styles.title}>Choose your fate</Text>
