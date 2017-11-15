@@ -1,38 +1,79 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Text,
     View,
-    StyleSheet} from 'react-native';
+    TouchableOpacity,
+    StyleSheet
+} from 'react-native';
 
-const CreateGoalOrJoin = () => {
-    const { title, viewStyle } = styles;
+
+export default SignUpForm = () => {
+
     return (
-        <View style={viewStyle}>
-            <Text style={title}>Create Goal or Join Team?</Text>
+        <View style={styles.viewStyle}>
+            <Text style={styles.title}>Choose your fate</Text>
+            <View style={styles.btnCont}>
+                <TouchableOpacity
+                    style={styles.signUpButton}
+                    onPress={printThing = () => {
+                        alert("This does nothing")
+                    }}
+                    color='silver'>
+                    <Text style={styles.signUpText}>Create Goal</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.signUpButton}
+                    onPress={printThing = () => {
+                        alert("This does nothing")
+                    }}
+                    color='silver'>
+                    <Text style={styles.signUpText}>Choose Team</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
-};
-
-export default CreateGoalOrJoin;
+}
 
 const styles = StyleSheet.create({
+    viewStyle: {
+        height: '48%',
+        paddingTop: '38%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 3,
+        position: 'relative',
+
+    },
     title: {
         fontSize: 40,
         textAlign: 'center',
-        color: 'white',
+        color: '#b21726',
         width: '40%',
-        // backgroundColor: 'orange'
+
     },
-    viewStyle: {
-        height: '10%',
-        marginTop: '40%',
-        justifyContent: 'center',
+    btnCont: {
+        height:'30%',
+        flexDirection: 'row',
+        width: '100%',
+        marginTop:'10%'
+    },
+    signUpButton: {
+        backgroundColor: '#222222',
+        width: '50%',
+        flex: 1,
+        borderWidth: 1,
+        borderRadius: 20,
         alignItems: 'center',
-        // backgroundColor: 'red',
-        // shadowColor: '#ff0000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        elevation: 3,
-        position: 'relative'
+        justifyContent: 'center',
+        marginTop: 10,
+        marginLeft:13,
+        marginRight:13,
+    },
+    signUpText: {
+        color: 'silver',
+        fontWeight: '600',
+        fontSize: 16,
     }
 });
+
+

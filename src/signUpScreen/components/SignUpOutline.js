@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     },
     signInFormCont: {
         height: '30%',
-        marginTop: '15%',
+        marginTop: '25%',
         alignItems: 'center'
     },
 });

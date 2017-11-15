@@ -17,9 +17,9 @@ export default SignUpForm = () => {
                 onPress={printThing = () => {
                     alert("This does nothing")
                 }}
-                // title="Sign Up"
-                color='silver'
-            ><Text style={styles.signUpText}>Sign Up</Text></TouchableOpacity>
+                color='silver'>
+            <Text style={styles.signUpText}>Sign Up</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -38,17 +38,17 @@ const styles = StyleSheet.create({
     },
     signUpButton: {
         backgroundColor: '#222222',
-        width:'50%',
+        width: '50%',
         flex: 1,
-        borderWidth:1,
-        borderRadius:20,
-        alignItems:'center',
-        justifyContent:'center',
-        marginTop:10
+        borderWidth: 1,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 10
     },
     signUpText: {
-        color:'silver',
-        fontWeight:'600',
+        color: 'silver',
+        fontWeight: '600',
         fontSize: 16,
     }
 });
