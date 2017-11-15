@@ -17,7 +17,7 @@ const RouterComponent = () => {
             <Scene key="root">
                 <Scene key="createGoalOrJoin" component={CreateGoalOrJoin} title="" />
                 <Scene key="goalCreate"       component={GoalCreate}       title="create your goal" />
-                <Scene key="landing"          component={Landing}          title="login" />
+                <Scene key="landing"          component={Landing}          title="login" initial/>
                 <Scene key="profileEdit"      component={ProfileEdit}      title="edit profile" />
                 <Scene key="signUp"           component={SignUp}           title="sign up" />
                 <Scene key="team"             component={Team}             title="team stats" />
