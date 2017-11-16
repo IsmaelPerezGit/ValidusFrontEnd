@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 40,
         textAlign: 'center',
         color: '#b21726',
-        // flex: 1
+        marginBottom: '5%'
     },
     viewStyle: {
         flex: 1,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         elevation: 2,
         marginLeft: 5,
         marginRight: 5,
-        marginTop: '5%',
+        // marginTop: '5%',
         alignItems: 'center',
     },
     cardHeader: {
