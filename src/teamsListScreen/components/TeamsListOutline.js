@@ -8,40 +8,39 @@ import {
 } from 'react-native';
 
 const TeamList = () => {
-    const {title, viewStyle} = styles;
     return (
-        <ScrollView>
-            <View style={viewStyle}>
-                <Text style={title}>Choose a Team</Text>
-                <View style={styles.cardContainer}>
-                    <View style={styles.cardTextCont}>
-                        <Text style={styles.cardHeader}>Team Name: Tornadoes</Text>
-                        <Text style={styles.cardHeader}>Goal: Bills Goal</Text>
-                        <Text style={styles.cardHeader}>Open Slots: 3</Text>
-                        <Text style={styles.cardHeader}>Start Date: 12/12/2017</Text>
-                        <Text style={styles.cardHeader}>End Date: 01/01/2018</Text>
+            <View style={styles.viewStyle}>
+                <Text style={styles.title}>Choose a Team</Text>
+                <ScrollView>
+                    <View style={styles.cardContainer}>
+                        <View style={styles.cardTextCont}>
+                            <Text style={styles.cardHeader}>Team Name: Tornadoes</Text>
+                            <Text style={styles.cardHeader}>Goal: Bills Goal</Text>
+                            <Text style={styles.cardHeader}>Open Slots: 3</Text>
+                            <Text style={styles.cardHeader}>Start Date: 12/12/2017</Text>
+                            <Text style={styles.cardHeader}>End Date: 01/01/2018</Text>
+                        </View>
+                        <View style={styles.btnCont}>
+                            <TouchableOpacity
+                                style={styles.completeWorkoutButton}
+                                onPress={printThing = () => {
+                                    alert("This does nothing")
+                                }}
+                                color='silver'>
+                                <Text style={styles.buttonText}>Join Team</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.completeWorkoutButton}
+                                onPress={printThing = () => {
+                                    alert("This does nothing")
+                                }}
+                                color='silver'>
+                                <Text style={styles.buttonText}>View Team</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.btnCont}>
-                        <TouchableOpacity
-                            style={styles.completeWorkoutButton}
-                            onPress={printThing = () => {
-                                alert("This does nothing")
-                            }}
-                            color='silver'>
-                            <Text style={styles.buttonText}>Join Team</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.completeWorkoutButton}
-                            onPress={printThing = () => {
-                                alert("This does nothing")
-                            }}
-                            color='silver'>
-                            <Text style={styles.buttonText}>View Team</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                </ScrollView>
             </View>
-        </ScrollView>
     );
 };
 export default TeamList;
@@ -51,10 +50,11 @@ const styles = StyleSheet.create({
         fontSize: 40,
         textAlign: 'center',
         color: '#b21726',
-        flex: 1
+        // flex: 1
     },
     viewStyle: {
         flex: 1,
+        height: '80%',
         marginTop: '5%',
         alignItems: 'center',
         shadowOffset: {width: 0, height: 2},
