@@ -6,14 +6,12 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-
 import * as Progress from 'react-native-progress';
 
 export default class UserProfile extends Component {
     state = {
         curTime: null
     };
-
     componentDidMount() {
         setInterval(() => {
             this.setState({
@@ -21,10 +19,7 @@ export default class UserProfile extends Component {
             })
         }, 1000)
     }
-
     render() {
-
-
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
@@ -75,8 +70,6 @@ export default class UserProfile extends Component {
                         <Text style={styles.signUpText}>Create Goal</Text>
                     </TouchableOpacity>
                 </View>
-
-
             </ScrollView>
         );
     }
@@ -137,7 +130,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: '13%',
-        flex:1
+        flex: 1
     },
     date: {
         fontSize: 20,
