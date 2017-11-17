@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 16,
     },
-    teamPageCreatGoalBtnCont: {
+    teamPageCreateGoalBtnCont: {
         height: '5%',
         width: '100%',
         marginTop: '28%',
@@ -163,6 +163,6 @@ const styles = StyleSheet.create({
     },
     teamPageButton: {
         marginBottom: 15
-    }
+    },
 });
 
