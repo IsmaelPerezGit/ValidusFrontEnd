@@ -7,6 +7,12 @@ import {
     StyleSheet} from 'react-native';
 
 export default class Signup extends Component {
+
+    onButtonPress() {
+        const { email, password } = this.state;
+        alert("This does nothing");
+    }
+
     render() {
         return (
             <View style={styles.viewStyle}>
@@ -27,9 +33,7 @@ export default class Signup extends Component {
                     value={"  verify password"}
                 />
                 <Button
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
+                    onPress={() => this.onButtonPress()}
                     title="Submit"
                     color="silver"/>
             </View>

@@ -6,34 +6,39 @@ import {
     TouchableOpacity,
     StyleSheet} from 'react-native';
 
-const MessageBoard = () => {
-    return (
-        <View style={styles.messageBoardCont}>
-            <View style={styles.textAreaCont}>
-                <View style={styles.messageBoardTextArea}>
-                    <Text style={styles.messageBoardText}>BIll: This is where the messages are going to
-                        display</Text>
+class MessageBoard extends Component {
+
+    onButtonPress() {
+        const { email, password } = this.state;
+        alert("This does nothing");
+    }
+
+    render () {
+        return (
+            <View style={styles.messageBoardCont}>
+                <View style={styles.textAreaCont}>
+                    <View style={styles.messageBoardTextArea}>
+                        <Text style={styles.messageBoardText}>BIll: This is where the messages are going to
+                            display</Text>
+                    </View>
+                </View>
+                <View style={styles.messageFormCont}>
+                    <TextInput
+                        style={styles.messageForm}
+                        onChangeText={(text) => this.setState({text})}
+                        value={'type message here'}/>
+                    <View style={styles.submitMessageBtnCont}>
+                        <TouchableOpacity
+                            style={styles.submitButton}
+                            onPress={() => this.onButtonPress()}
+                            color='silver'>
+                            <Text style={styles.submitButtonText}>Submit</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
-            <View style={styles.messageFormCont}>
-                <TextInput
-                    style={styles.messageForm}
-                    onChangeText={(text) => this.setState({text})}
-                    value={'type message here'}
-                />
-                <View style={styles.submitMessageBtnCont}>
-                    <TouchableOpacity
-                        style={styles.submitButton}
-                        onPress={printThing = () => {
-                            alert("This does nothing")
-                        }}
-                        color='silver'>
-                        <Text style={styles.submitButtonText}>Submit</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </View>
-    );
+        );
+    }
 };
 export default MessageBoard;
 

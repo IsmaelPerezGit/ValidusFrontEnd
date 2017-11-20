@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         height: '20%',
         // marginTop: '0%',
-        // justifyContent: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,
         position: 'relative'

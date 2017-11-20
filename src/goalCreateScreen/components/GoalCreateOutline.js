@@ -12,6 +12,12 @@ import TeamSize from './TeamSizeLimit'
 import StartEndDateForm from './StartEndDateForm';
 
 export default class GoalCreate extends Component {
+
+    onButtonPress() {
+        const { email, password } = this.state;
+        alert("This does nothing");
+    }
+
     render() {
         return (
             <ScrollView>
@@ -25,9 +31,7 @@ export default class GoalCreate extends Component {
                     <View style={styles.signUpButtonCont}>
                         <TouchableOpacity
                             style={styles.signUpButton}
-                            onPress={printThing = () => {
-                                alert("This does nothing")
-                            }}
+                            onPress={() => this.onButtonPress()}
                             color='silver'>
                             <Text style={styles.signUpText}>Create Goal</Text>
                         </TouchableOpacity>

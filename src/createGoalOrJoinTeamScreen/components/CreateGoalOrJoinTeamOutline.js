@@ -6,30 +6,34 @@ import {
     StyleSheet
 } from 'react-native';
 
-export default CreateGoalOrJoin = () => {
-    return (
-        <View style={styles.viewStyle}>
-            <Text style={styles.title}>Choose your fate</Text>
-            <View style={styles.btnCont}>
-                <TouchableOpacity
-                    style={styles.signUpButton}
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
-                    color='silver'>
-                    <Text style={styles.signUpText}>Create Goal</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.signUpButton}
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
-                    color='silver'>
-                    <Text style={styles.signUpText}>Choose Team</Text>
-                </TouchableOpacity>
+export default class CreateGoalOrJoin extends Component {
+
+    onButtonPress() {
+        const { email, password } = this.state;
+        alert("This does nothing");
+    }
+
+    render () {
+        return (
+            <View style={styles.viewStyle}>
+                <Text style={styles.title}>Choose your fate</Text>
+                <View style={styles.btnCont}>
+                    <TouchableOpacity
+                        style={styles.signUpButton}
+                        onPress={() => this.onButtonPress()}
+                        color='silver'>
+                        <Text style={styles.signUpText}>Create Goal</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.signUpButton}
+                        onPress={() => this.onButtonPress()}
+                        color='silver'>
+                        <Text style={styles.signUpText}>Choose Team</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
-    );
+        );
+    }
 }
 
 const styles = StyleSheet.create({

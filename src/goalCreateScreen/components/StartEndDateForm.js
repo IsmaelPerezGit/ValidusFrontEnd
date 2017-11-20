@@ -31,7 +31,6 @@ class StartEndDateForm extends Component {
         );
     }
 };
-
 export default StartEndDateForm;
 
 const styles = StyleSheet.create({

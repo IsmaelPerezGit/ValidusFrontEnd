@@ -7,6 +7,12 @@ import {
     StyleSheet} from 'react-native';
 
 export default class ProfileEdit extends Component {
+
+    onButtonPress() {
+        const { email, password } = this.state;
+        alert("This does nothing");
+    }
+
     render() {
         return (
             <View style={styles.viewStyle}>
@@ -32,9 +38,7 @@ export default class ProfileEdit extends Component {
                     value={"  confirm new password"}
                 />
                 <Button
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
+                    onPress={() => this.onButtonPress()}
                     title="Submit"
                     color="silver"/>
             </View>
