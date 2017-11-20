@@ -35,7 +35,7 @@ export default CreateGoalOrJoin = () => {
 const styles = StyleSheet.create({
     viewStyle: {
         height: '48%',
-        paddingTop: '38%',
+        paddingTop: '30%',
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,

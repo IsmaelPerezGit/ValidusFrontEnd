@@ -8,8 +8,8 @@
 	},
 	"dependencies": {
 		"axios": "^0.17.1",
-		"react": "16.0.0",
-		"react-native": "0.50.3",
+		"react": "^16.1.1",
+		"react-native": "^0.50.3",
 		"react-native-checkbox": "^2.0.0",
 		"react-native-elements": "^0.18.2",
 		"react-native-progress": "^3.4.0",

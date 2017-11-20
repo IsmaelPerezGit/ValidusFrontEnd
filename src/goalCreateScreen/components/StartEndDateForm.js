@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
 import {
-    Text,
     View,
+    TextInput,
+    Button,
     StyleSheet} from 'react-native';
 
 const StartEndDateForm = () => {
-    const { title, viewStyle } = styles;
     return (
-        <View style={viewStyle}>
-            <Text style={title}>Start End Date Form</Text>
+        <View style={styles.formCont}>
+            <TextInput
+                style={styles.startEnd}
+                onChangeText={(text) => this.setState({text})}
+                value={"  Start Date"}
+            />
+            <TextInput
+                style={styles.startEnd}
+                onChangeText={(text) => this.setState({text})}
+                value={"  End Date"}
+            />
+            <Button
+                onPress={printThing = () => {
+                    alert("This does nothing")
+                }}
+                title="Submit"
+                color="silver"/>
         </View>
     );
 };
@@ -16,23 +31,18 @@ const StartEndDateForm = () => {
 export default StartEndDateForm;
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 40,
-        textAlign: 'center',
-        color: 'white',
-        width: '40%',
-        // backgroundColor: 'orange'
+    formCont: {
+        alignItems:'center'
     },
-    viewStyle: {
-        height: '10%',
-        marginTop: '40%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: 'red',
-        // shadowColor: '#ff0000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        elevation: 3,
-        position: 'relative'
+    startEnd: {
+        height: 40,
+        width: '85%',
+        borderColor: 'black',
+        backgroundColor: '#222222',
+        borderWidth: 1,
+        marginTop: '5%',
+        color: 'silver',
+        borderRadius: 10,
+        alignItems: 'center'
     }
 });

@@ -3,12 +3,24 @@ import {
     Text,
     View,
     StyleSheet} from 'react-native';
+import * as Progress from 'react-native-progress';
 
 const TeamMemberProgress = () => {
-    const { title, viewStyle } = styles;
     return (
-        <View style={viewStyle}>
-            <Text style={title}>Team Members Progress</Text>
+        <View style={styles.teamProgressCont}>
+            <View style={styles.teamMemberCont}>
+                <View style={styles.nameCont}>
+                    <Text style={styles.nameText}>Name Here</Text>
+                </View>
+                <View style={styles.progressBarCont}>
+                    <Progress.Bar
+                        progress={.25}
+                        height={20}
+                        animated={true}
+                        color={'#b21726'}
+                        borderWidth={3}/>
+                </View>
+            </View>
         </View>
     );
 };
@@ -16,23 +28,26 @@ const TeamMemberProgress = () => {
 export default TeamMemberProgress;
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 40,
-        textAlign: 'center',
-        color: 'white',
-        width: '40%',
-        // backgroundColor: 'orange'
+    teamProgressCont: {
+        width: '100%',
+        height: '100%',
+        marginTop: 10,
     },
-    viewStyle: {
-        height: '10%',
-        marginTop: '40%',
-        justifyContent: 'center',
+    teamMemberCont: {
+        width: '100%',
+        height: '25%',
+    },
+    nameCont: {
         alignItems: 'center',
-        // backgroundColor: 'red',
-        // shadowColor: '#ff0000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        elevation: 3,
-        position: 'relative'
-    }
+        justifyContent: 'center'
+    },
+    nameText: {
+        color: 'silver',
+        fontSize: 20,
+        fontWeight: '500',
+    },
+    progressBarCont: {
+        alignItems: 'center',
+        margin: 2
+    },
 });

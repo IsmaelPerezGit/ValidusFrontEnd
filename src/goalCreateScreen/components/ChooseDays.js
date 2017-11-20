@@ -3,12 +3,49 @@ import {
     Text,
     View,
     StyleSheet} from 'react-native';
+import CheckBox from 'react-native-checkbox';
 
 const ChooseDays = () => {
-    const { title, viewStyle } = styles;
     return (
-        <View style={viewStyle}>
-            <Text style={title}>Choose Days</Text>
+        <View style={styles.chooseDaysCont}>
+            <Text style={styles.text}>Choose your workout days</Text>
+            <View style={styles.checkBoxCont}>
+                <CheckBox
+                    label='Sunday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+                <CheckBox
+                    label='Monday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+                <CheckBox
+                    label='Tuesday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+                <CheckBox
+                    label='Wednesday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+                <CheckBox
+                    label='Thursday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+                <CheckBox
+                    label='Friday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+                <CheckBox
+                    label='Saturday'
+                    checked={true}
+                    onChange={(checked) => console.log('I am checked', checked)}
+                />
+            </View>
         </View>
     );
 };
@@ -16,23 +53,17 @@ const ChooseDays = () => {
 export default ChooseDays;
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 40,
-        textAlign: 'center',
-        color: 'white',
-        width: '40%',
-        // backgroundColor: 'orange'
+    chooseDaysCont: {
+        justifyContent:'center',
+        alignItems:'center'
     },
-    viewStyle: {
-        height: '10%',
-        marginTop: '40%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: 'red',
-        // shadowColor: '#ff0000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        elevation: 3,
-        position: 'relative'
-    }
+    checkBoxCont: {
+        marginTop: 10
+    },
+    text: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: '#b21726',
+        marginTop: 30
+    },
 });
