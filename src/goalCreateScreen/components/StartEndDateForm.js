@@ -20,19 +20,13 @@ class StartEndDateForm extends Component {
                     placeholderTextColor='white'
                     style={styles.startEndFields}
                     value={this.state.startDate}
-                    onChangeText={(startDateText) => this.setState({startDateText})}/>
+                    onChangeText={(startDate) => this.setState({startDate})}/>
                 <TextInput
                     placeholder='end date'
                     placeholderTextColor='white'
                     style={styles.startEndFields}
                     value={this.state.endDate}
-                    onChangeText={(endDateText) => this.setState({endDateText})}/>
-                <Button
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
-                    title="Submit"
-                    color="silver"/>
+                    onChangeText={(endDate) => this.setState({endDate})}/>
             </View>
         );
     }

@@ -4,6 +4,7 @@ import {
     Text,
     View,
     ScrollView,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
 import ChooseDays from './ChooseDays';
@@ -21,6 +22,16 @@ export default class GoalCreate extends Component {
                     <StartEndDateForm/>
                     <ChooseDays/>
                     <TeamSize/>
+                    <View style={styles.signUpButtonCont}>
+                        <TouchableOpacity
+                            style={styles.signUpButton}
+                            onPress={printThing = () => {
+                                alert("This does nothing")
+                            }}
+                            color='silver'>
+                            <Text style={styles.signUpText}>Create Goal</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ScrollView>
         );
@@ -31,8 +42,6 @@ const styles = StyleSheet.create({
     viewStyle: {
         backgroundColor: 'black',
         paddingTop: 10,
-        height: '100%',
-        elevation: 3,
         position: 'relative',
         flex: 1
     },
@@ -45,5 +54,24 @@ const styles = StyleSheet.create({
         color: '#b21726',
         width: '80%',
     },
+    signUpButtonCont: {
+        alignItems: 'center',
+        backgroundColor: 'red',
+        height: 40
+    },
+    signUpButton: {
+        backgroundColor: '#222222',
+        height: '100%',
+        width: '80%',
+        borderWidth: 1,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    signUpText: {
+        color: 'silver',
+        fontWeight: '600',
+        fontSize: 16,
+    }
 });
 
