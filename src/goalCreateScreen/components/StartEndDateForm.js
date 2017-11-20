@@ -1,40 +1,54 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     View,
     TextInput,
     Button,
-    StyleSheet} from 'react-native';
+    StyleSheet
+} from 'react-native';
 
-const StartEndDateForm = () => {
-    return (
-        <View style={styles.formCont}>
-            <TextInput
-                style={styles.startEnd}
-                onChangeText={(text) => this.setState({text})}
-                value={"  Start Date"}
-            />
-            <TextInput
-                style={styles.startEnd}
-                onChangeText={(text) => this.setState({text})}
-                value={"  End Date"}
-            />
-            <Button
-                onPress={printThing = () => {
-                    alert("This does nothing")
-                }}
-                title="Submit"
-                color="silver"/>
-        </View>
-    );
+class StartEndDateForm extends Component {
+    state = {
+        startDate: '',
+        endDate: ''
+    };
+
+    render() {
+        return (
+            <View style={styles.formCont}>
+                <TextInput
+                    placeholder='start date'
+                    placeholderTextColor='white'
+                    style={styles.startEndFields}
+                    value={this.state.startDate}
+                    onChangeText={(startDateText) => this.setState({startDateText})}/>
+                <TextInput
+                    placeholder='end date'
+                    placeholderTextColor='white'
+                    style={styles.startEndFields}
+                    value={this.state.endDate}
+                    onChangeText={(endDateText) => this.setState({endDateText})}/>
+                <Button
+                    onPress={printThing = () => {
+                        alert("This does nothing")
+                    }}
+                    title="Submit"
+                    color="silver"/>
+            </View>
+        );
+    }
 };
 
 export default StartEndDateForm;
 
 const styles = StyleSheet.create({
     formCont: {
-        alignItems:'center'
+        alignItems: 'center'
     },
-    startEnd: {
+    startEndFields: {
+        paddingLeft: 5,
+        paddingRight: 5,
+        fontSize: 18,
+        lineHeight: 23,
         height: 40,
         width: '85%',
         borderColor: 'black',
@@ -44,5 +58,10 @@ const styles = StyleSheet.create({
         color: 'silver',
         borderRadius: 10,
         alignItems: 'center'
+    },
+    labelStyle: {
+        fontSize: 18,
+        paddingLeft: 20,
+        flex: 1
     }
 });
