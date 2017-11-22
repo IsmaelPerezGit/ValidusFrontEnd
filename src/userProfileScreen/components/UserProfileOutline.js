@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import firebase from 'firebase';
 import {
     Text,
     ScrollView,
@@ -13,6 +14,7 @@ export default class UserProfile extends Component {
         curTime: null
     };
     componentDidMount() {
+        console.log('user token:' + firebase.User.prototype.getIdToken())
         setInterval(() => {
             this.setState({
                 curTime: new Date().toLocaleString()

@@ -6,6 +6,7 @@ import {
     Image,
     Button
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import Spinner from './Spinner';
 import LoginForm from './LoginForm';
@@ -20,7 +21,6 @@ export default class Landing extends Component {
             } else {
                 this.setState({loggedIn: false})
             }
-            ;
         })
     }
 
@@ -40,7 +40,9 @@ export default class Landing extends Component {
                             onPress={() => firebase.auth().signOut()}
                             title="Log Out"
                             color='orange'/>
-                    </View>);
+                        {Actions.userProfile()}
+                    </View>
+                );
             case false:
                 return (
                     <View style={styles.rendCont}>
@@ -55,13 +57,15 @@ export default class Landing extends Component {
     render() {
         return (
             <View>
-                <Image style={styles.cycleImage}
-                       source={{uri: '/Users/ismaelperez/Workspace/Javascript/ValidusProject/ValidusFrontEnd/assets/images/ValidusBikeBg.jpeg'}}/>
+                <View style={styles.imgCont}>
+                    <Image
+                        style={styles.cycleImage}
+                        source={{uri: '/Users/ismaelperez/Workspace/Javascript/ValidusProject/ValidusFrontEnd/assets/images/ValidusBikeBg.jpeg'}}/>
+                </View>
                 <View style={styles.viewStyle}>
                     <Text style={styles.title}>Validus</Text>
                 </View>
                 {this.renderContent()}
-
             </View>
         );
     }
@@ -89,8 +93,11 @@ const styles = StyleSheet.create({
         elevation: 3,
         position: 'relative'
     },
-    cycleImage: {
+    imgCont: {
         height: '14%'
+    },
+    cycleImage: {
+        height: '100%'
     }
 });
 
