@@ -9,7 +9,7 @@ import {
 export default class CreateGoalOrJoin extends Component {
 
     onButtonPress() {
-        const { email, password } = this.state;
+       // const { email, password } = this.state;
         alert("This does nothing");
     }
 
