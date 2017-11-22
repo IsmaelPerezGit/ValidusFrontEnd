@@ -14,7 +14,7 @@ export default class UserProfile extends Component {
         curTime: null
     };
     componentDidMount() {
-        console.log('user token:' + firebase.User.prototype.getIdToken())
+        console.log(firebase.auth().currentUser.getToken())
         setInterval(() => {
             this.setState({
                 curTime: new Date().toLocaleString()
