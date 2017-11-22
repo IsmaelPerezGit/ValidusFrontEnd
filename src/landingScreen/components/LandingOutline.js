@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Text,
     View,
@@ -17,7 +17,10 @@ export default class Landing extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({loggedIn: true});
-            } else {this.setState({ loggedIn: false})};
+            } else {
+                this.setState({loggedIn: false})
+            }
+            ;
         })
     }
 
@@ -52,11 +55,12 @@ export default class Landing extends Component {
     render() {
         return (
             <View>
-                <Image style={styles.cycleImage} source={{uri: '/Users/ismaelperez/Workspace/Javascript/ValidusProject/ValidusFrontEnd/assets/images/ValidusBikeBg.jpeg'}}/>
+                <Image style={styles.cycleImage}
+                       source={{uri: '/Users/ismaelperez/Workspace/Javascript/ValidusProject/ValidusFrontEnd/assets/images/ValidusBikeBg.jpeg'}}/>
                 <View style={styles.viewStyle}>
                     <Text style={styles.title}>Validus</Text>
                 </View>
-                    {this.renderContent()}
+                {this.renderContent()}
 
             </View>
         );
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     },
     btnCont: {
         justifyContent: 'center',
-        height:'50%'
+        height: '50%'
     },
     title: {
         fontSize: 40,
