@@ -13,7 +13,7 @@ export default class UserProfile extends Component {
     state = {
         curTime: null
     };
-    componentDidMount() {
+    componentWillMount() {
         console.log(firebase.auth().currentUser.getToken())
         setInterval(() => {
             this.setState({
@@ -54,7 +54,7 @@ export default class UserProfile extends Component {
                         <Text style={styles.signUpText}>Complete Workout</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.teamPageCreatGoalBtnCont}>
+                <View style={styles.teamPageCreateGoalBtnCont}>
                     <TouchableOpacity
                         style={styles.teamPageButton}
                         onPress={printThing = () => {
