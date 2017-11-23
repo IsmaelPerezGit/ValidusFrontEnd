@@ -22,11 +22,12 @@ class SignUpForm extends Component {
         const {email, username, password, verifyPassword} = this.state;
         if (email === '' || username === '' || password === '') {
             return alert('Must fill in all fields')
-        }
-        else if (password !== verifyPassword) {
+        } else if (password !== verifyPassword) {
             return alert('Passwords do not match');
+        } else if (password.length >= 6) {
+            return firebase.auth().createUserWithEmailAndPassword(email, password)
         }
-        return firebase.auth().createUserWithEmailAndPassword(email, password)
+        return alert('password must be at least 6 characters long')
     }
 
     render() {
