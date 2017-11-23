@@ -17,13 +17,13 @@ class StartEndDateForm extends Component {
             <View style={styles.formCont}>
                 <TextInput
                     placeholder='start date'
-                    placeholderTextColor='white'
+                    placeholderTextColor='grey'
                     style={styles.startEndFields}
                     value={this.state.startDate}
                     onChangeText={(startDate) => this.setState({startDate})}/>
                 <TextInput
                     placeholder='end date'
-                    placeholderTextColor='white'
+                    placeholderTextColor='grey'
                     style={styles.startEndFields}
                     value={this.state.endDate}
                     onChangeText={(endDate) => this.setState({endDate})}/>

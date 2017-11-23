@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     TextInput,
     Button,
     View,
-    StyleSheet} from 'react-native';
+    StyleSheet
+} from 'react-native';
+import firebase from 'firebase';
 
 class SignUpForm extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -18,13 +19,14 @@ class SignUpForm extends Component {
     }
 
     onButtonPress() {
-        if(this.state.email === '' || this.state.username === '' || this.state.password === ''){
-            return alert('Must fill in all fields!')
+        const {email, username, password, verifyPassword} = this.state;
+        if (email === '' || username === '' || password === '') {
+            return alert('Must fill in all fields')
         }
-        else if(this.state.password !== this.state.verifyPassword){
-            return alert('Passwords do not match!!');
+        else if (password !== verifyPassword) {
+            return alert('Passwords do not match');
         }
-       return alert("I need Info!!");
+        return firebase.auth().createUserWithEmailAndPassword(email, password)
     }
 
     render() {
@@ -36,16 +38,14 @@ class SignUpForm extends Component {
                     placeholder='Email'
                     placeholderTextColor='grey'
                     onChangeText={(email) => this.setState({email})}
-                    value={this.state.email}
-                />
+                    value={this.state.email}/>
                 <TextInput
                     style={styles.signUpForm}
                     autoCorrect={false}
                     placeholder='Username'
                     placeholderTextColor='grey'
                     onChangeText={(username) => this.setState({username})}
-                    value={this.state.username}
-                />
+                    value={this.state.username}/>
                 <TextInput
                     style={styles.signUpForm}
                     secureTextEntry={true}
@@ -53,8 +53,7 @@ class SignUpForm extends Component {
                     placeholder='Password'
                     placeholderTextColor='grey'
                     onChangeText={(password) => this.setState({password})}
-                    value={this.state.password}
-                />
+                    value={this.state.password}/>
                 <TextInput
                     style={styles.signUpForm}
                     secureTextEntry={true}
@@ -62,8 +61,7 @@ class SignUpForm extends Component {
                     placeholder='Verify Password'
                     placeholderTextColor='grey'
                     onChangeText={(verifyPassword) => this.setState({verifyPassword})}
-                    value={this.state.verifyPassword}
-                />
+                    value={this.state.verifyPassword}/>
                 <View style={styles.btnCont}>
                     <Button
                         onPress={() => this.onButtonPress()}
@@ -91,8 +89,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginTop: '5%',
         color: 'orange',
-        borderRadius:10,
-        alignItems:'center',
+        borderRadius: 10,
+        alignItems: 'center',
         paddingLeft: 10,
     },
     btnCont: {
