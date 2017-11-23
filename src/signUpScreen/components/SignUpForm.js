@@ -28,16 +28,16 @@ class SignUpForm extends Component {
         } else if (password !== verifyPassword) {
             return alert('Passwords do not match');
         } else if (password.length < 6) {
-        return alert('password must be at least 6 characters long')
+            return alert('password must be at least 6 characters long')
         }
-            return (
-                axios.post('http://localhost:3000/users/new', {
-                    email: email,
-                    username: username,
-                    user_token: password,
-                    team_id: teamId
-                 }))
-                .then(() => firebase.auth().createUserWithEmailAndPassword(email, password))
+        return (
+            axios.post('http://localhost:3000/users/new', {
+                email: email,
+                username: username,
+                user_token: password,
+                team_id: teamId
+            }))
+            .then(() => firebase.auth().createUserWithEmailAndPassword(email, password))
     }
 
     render() {
