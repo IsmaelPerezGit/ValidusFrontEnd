@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
+import {Actions} from 'react-native-router-flux';
 import {
     Text,
     ScrollView,
@@ -14,7 +15,7 @@ export default class UserProfile extends Component {
         curTime: null
     };
     componentWillMount() {
-        console.log(firebase.auth().currentUser.getToken())
+        //console.log(firebase.auth().currentUser.getToken())
         setInterval(() => {
             this.setState({
                 curTime: new Date().toLocaleString()
@@ -57,17 +58,13 @@ export default class UserProfile extends Component {
                 <View style={styles.teamPageCreateGoalBtnCont}>
                     <TouchableOpacity
                         style={styles.teamPageButton}
-                        onPress={printThing = () => {
-                            alert("This does nothing")
-                        }}
+                        onPress={() => {Actions.team()}}
                         color='silver'>
                         <Text style={styles.signUpText}>Team Page</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.teamPageButton}
-                        onPress={printThing = () => {
-                            alert("This does nothing")
-                        }}
+                        onPress={() => {Actions.goalCreate()}}
                         color='silver'>
                         <Text style={styles.signUpText}>Create Goal</Text>
                     </TouchableOpacity>

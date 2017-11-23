@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Actions} from 'react-native-router-flux';
 import {
     Text,
     View,
@@ -14,8 +15,8 @@ export default SignUpForm = () => {
             <Text style={styles.text}>Not A Member?</Text>
             <TouchableOpacity
                 style={styles.signUpButton}
-                onPress={printThing = () => {
-                    alert("This does nothing")
+                onPress={ () => {
+                    Actions.signUp()
                 }}
                 color='silver'>
             <Text style={styles.signUpText}>Sign Up</Text>

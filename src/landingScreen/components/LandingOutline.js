@@ -11,10 +11,14 @@ import firebase from 'firebase';
 import Spinner from './Spinner';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+import axios from 'axios';
 
 export default class Landing extends Component {
 
     componentWillMount() {
+        axios.get('http://localhost:3000/users')
+            .then(response => console.log('this is the response' + JSON.stringify(response.data)));
+
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({loggedIn: true});
@@ -39,6 +43,10 @@ export default class Landing extends Component {
                         <Button
                             onPress={() => firebase.auth().signOut()}
                             title="Log Out"
+                            color='orange'/>
+                        <Button
+                            onPress={() => {Actions.userProfile()}}
+                            title="Profile"
                             color='orange'/>
                         {Actions.userProfile()}
                     </View>

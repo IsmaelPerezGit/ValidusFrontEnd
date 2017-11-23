@@ -1,38 +1,59 @@
 import React, { Component } from 'react';
 import {
-    Text,
+    TextInput,
+    Button,
     View,
     StyleSheet} from 'react-native';
 
-const SignUpForm = () => {
-    const { title, viewStyle } = styles;
-    return (
-        <View style={viewStyle}>
-            <Text style={title}>Sign Up</Text>
-        </View>
-    );
+class SignUpForm extends Component {
+    onButtonPress() {
+        alert("I need Info!!");
+    }
+
+    render() {
+        return (
+            <View style={styles.signUpFormCont}>
+                <TextInput
+                    style={styles.signUpForm}
+                    onChangeText={(text) => this.setState({text})}
+                    value={"  username"}
+                />
+                <TextInput
+                    style={styles.signUpForm}
+                    onChangeText={(text) => this.setState({text})}
+                    value={"  password"}
+                />
+                <TextInput
+                    style={styles.signUpForm}
+                    onChangeText={(text) => this.setState({text})}
+                    value={"  verify password"}
+                />
+                <Button
+                    onPress={() => this.onButtonPress()}
+                    title="Submit"
+                    color="orange"/>
+            </View>
+        );
+    }
 };
 
 export default SignUpForm;
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 40,
-        textAlign: 'center',
-        color: 'white',
-        width: '40%',
-        // backgroundColor: 'orange'
+    signUpForm: {
+        height: 40,
+        width: '85%',
+        borderColor: 'black',
+        backgroundColor: '#222222',
+        borderWidth: 1,
+        marginTop: '5%',
+        color: 'silver',
+        borderRadius:10,
+        alignItems:'center'
     },
-    viewStyle: {
-        height: '10%',
-        marginTop: '40%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: 'red',
-        // shadowColor: '#ff0000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
-        elevation: 3,
-        position: 'relative'
-    }
+    signUpFormCont: {
+        height: '30%',
+        marginTop: '10%',
+        alignItems: 'center'
+    },
 });

@@ -9,9 +9,9 @@ import {
 const TeamSize = () => {
     return (
         <View>
-                <View style={styles.sizeLimitText}>
-                    <Text style={styles.text}>Team Size Limit</Text>
-                </View>
+            <View style={styles.sizeLimitTextCont}>
+                <Text style={styles.text}>Team Size Limit</Text>
+            </View>
             <View style={styles.pickerCont}>
                 <Picker style={styles.picker}>
                     <Picker.Item
@@ -63,14 +63,15 @@ const TeamSize = () => {
 export default TeamSize;
 
 const styles = StyleSheet.create({
-    sizeLimitText: {
-        alignItems:'center'
+    sizeLimitTextCont: {
+        height: '50%',
+        alignItems: 'center'
     },
     picker: {
         height: '100%',
         width: '20%',
         justifyContent: 'center',
-        backgroundColor:'orange'
+        // backgroundColor:'orange'
     },
     text: {
         fontSize: 20,
@@ -81,8 +82,8 @@ const styles = StyleSheet.create({
     pickerCont: {
         width: '100%',
         height: '40%',
-        alignItems:'center',
-        backgroundColor: 'pink'
+        alignItems: 'center',
+        // backgroundColor: 'pink'
     },
 
 });

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import {
     Text,
     View,
@@ -7,6 +6,7 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
+import {Actions} from 'react-native-router-flux';
 import ChooseDays from './ChooseDays';
 import TeamSize from './TeamSizeLimit'
 import StartEndDateForm from './StartEndDateForm';
@@ -27,13 +27,15 @@ export default class GoalCreate extends Component {
                     </View>
                     <StartEndDateForm/>
                     <ChooseDays/>
-                    <TeamSize/>
-                    <View style={styles.signUpButtonCont}>
+                    <View style={styles.teamSizeComponentCont}>
+                     <TeamSize/>
+                    </View>
+                    <View style={styles.createGoalButtonCont}>
                         <TouchableOpacity
-                            style={styles.signUpButton}
-                            onPress={() => this.onButtonPress()}
+                            style={styles.createGoalButton}
+                            onPress={() => {Actions.userProfile()}}
                             color='silver'>
-                            <Text style={styles.signUpText}>Create Goal</Text>
+                            <Text style={styles.createGoalButtonText}>Create Goal</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         paddingTop: 10,
         position: 'relative',
+        height: '140%',
         flex: 1
     },
     titleCont: {
@@ -58,12 +61,17 @@ const styles = StyleSheet.create({
         color: '#b21726',
         width: '80%',
     },
-    signUpButtonCont: {
+    teamSizeComponentCont: {
+        height:'30%',
+        justifyContent:'center'
+    },
+    createGoalButtonCont: {
+        marginTop: '10%',
         alignItems: 'center',
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         height: 40
     },
-    signUpButton: {
+    createGoalButton: {
         backgroundColor: '#222222',
         height: '100%',
         width: '80%',
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    signUpText: {
+    createGoalButtonText: {
         color: 'silver',
         fontWeight: '600',
         fontSize: 16,
