@@ -15,9 +15,7 @@ class RouterComponent extends Component {
     render() {
         return (
             <Router
-                sceneStyle={{backgroundColor: 'black'}}
-
-            >
+                sceneStyle={{backgroundColor: 'black'}}>
                 <Scene key="root">
                     <Scene key="createGoalOrJoin" component={CreateGoalOrJoin} title=""/>
                     <Scene key="goalCreate" component={GoalCreate} title="create your goal"/>
@@ -31,6 +29,6 @@ class RouterComponent extends Component {
             </Router>
         )
     }
-};
+}
 
 export default RouterComponent;

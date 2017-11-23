@@ -6,6 +6,7 @@ import {
     StyleSheet
 } from 'react-native';
 import firebase from 'firebase';
+import axios from 'axios';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -14,20 +15,29 @@ class SignUpForm extends Component {
             email: '',
             username: '',
             password: '',
-            verifyPassword: ''
+            verifyPassword: '',
+            teamId: 0
         };
     }
 
     onButtonPress() {
-        const {email, username, password, verifyPassword} = this.state;
+        const {email, username, password, verifyPassword, teamId} = this.state;
+
         if (email === '' || username === '' || password === '') {
             return alert('Must fill in all fields')
         } else if (password !== verifyPassword) {
             return alert('Passwords do not match');
-        } else if (password.length >= 6) {
-            return firebase.auth().createUserWithEmailAndPassword(email, password)
-        }
+        } else if (password.length < 6) {
         return alert('password must be at least 6 characters long')
+        }
+            return (
+                axios.post('http://localhost:3000/users/new', {
+                    email: email,
+                    username: username,
+                    user_token: password,
+                    team_id: teamId
+                 }))
+                .then(() => firebase.auth().createUserWithEmailAndPassword(email, password))
     }
 
     render() {
@@ -72,7 +82,7 @@ class SignUpForm extends Component {
             </View>
         );
     }
-};
+}
 
 export default SignUpForm;
 

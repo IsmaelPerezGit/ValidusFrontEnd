@@ -11,17 +11,24 @@ import {
 import * as Progress from 'react-native-progress';
 
 export default class UserProfile extends Component {
-    state = {
-        curTime: null
-    };
+
+    constructor (props) {
+        super(props);
+        this.state = {
+            curTime: null
+        };
+
+    }
+
     componentWillMount() {
         //console.log(firebase.auth().currentUser.getToken())
-        setInterval(() => {
-            this.setState({
-                curTime: new Date().toLocaleString()
-            })
-        }, 1000)
+            setInterval(() => {
+                this.setState({
+                    curTime: new Date().toLocaleString()
+                })
+            }, 1000)
     }
+
     render() {
         return (
             <ScrollView style={styles.scrollCont}>
@@ -48,7 +55,7 @@ export default class UserProfile extends Component {
                 <View style={styles.btnCont}>
                     <TouchableOpacity
                         style={styles.completeWorkoutButton}
-                        onPress={printThing = () => {
+                        onPress={() => {
                             alert("This does nothing")
                         }}
                         color='silver'>
