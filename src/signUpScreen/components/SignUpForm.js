@@ -18,7 +18,13 @@ class SignUpForm extends Component {
     }
 
     onButtonPress() {
-        alert("I need Info!!");
+        if(this.state.email === '' || this.state.username === '' || this.state.password === ''){
+            return alert('Must fill in all fields!')
+        }
+        else if(this.state.password !== this.state.verifyPassword){
+            return alert('Passwords do not match!!');
+        }
+       return alert("I need Info!!");
     }
 
     render() {
@@ -42,6 +48,7 @@ class SignUpForm extends Component {
                 />
                 <TextInput
                     style={styles.signUpForm}
+                    secureTextEntry={true}
                     autoCorrect={false}
                     placeholder='Password'
                     placeholderTextColor='grey'
@@ -50,16 +57,19 @@ class SignUpForm extends Component {
                 />
                 <TextInput
                     style={styles.signUpForm}
+                    secureTextEntry={true}
                     autoCorrect={false}
                     placeholder='Verify Password'
                     placeholderTextColor='grey'
                     onChangeText={(verifyPassword) => this.setState({verifyPassword})}
                     value={this.state.verifyPassword}
                 />
-                <Button
-                    onPress={() => this.onButtonPress()}
-                    title="Submit"
-                    color="orange"/>
+                <View style={styles.btnCont}>
+                    <Button
+                        onPress={() => this.onButtonPress()}
+                        title="Submit"
+                        color="orange"/>
+                </View>
             </View>
         );
     }
@@ -68,6 +78,11 @@ class SignUpForm extends Component {
 export default SignUpForm;
 
 const styles = StyleSheet.create({
+    signUpFormCont: {
+        height: '40%',
+        marginTop: '10%',
+        alignItems: 'center',
+    },
     signUpForm: {
         height: 40,
         width: '85%',
@@ -78,11 +93,9 @@ const styles = StyleSheet.create({
         color: 'orange',
         borderRadius:10,
         alignItems:'center',
-        paddingLeft: 10
+        paddingLeft: 10,
     },
-    signUpFormCont: {
-        height: '30%',
-        marginTop: '10%',
-        alignItems: 'center'
-    },
+    btnCont: {
+        marginTop: '5%'
+    }
 });
