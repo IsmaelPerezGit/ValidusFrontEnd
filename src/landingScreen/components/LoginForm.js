@@ -67,7 +67,7 @@ export default class LoginForm extends Component {
                     <TextInput
                         autoCorrect={false}
                         placeholder='Email'
-                        placeholderTextColor='white'
+                        placeholderTextColor='grey'
                         style={styles.signInForm}
                         value={this.state.email}
                         onChangeText={(email) => this.setState({email})}/>
@@ -75,7 +75,7 @@ export default class LoginForm extends Component {
                         autoCorrect={false}
                         secureTextEntry={true}
                         placeholder='Password'
-                        placeholderTextColor='white'
+                        placeholderTextColor='grey'
                         style={styles.signInForm}
                         value={this.state.password}
                         onChangeText={(password) => this.setState({password})}/>
