@@ -9,24 +9,31 @@ import {
     StyleSheet
 } from 'react-native';
 import * as Progress from 'react-native-progress';
+import axios from 'axios';
 
 export default class UserProfile extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
-            curTime: null
+            curTime: null,
+            name: ''
         };
 
     }
 
     componentWillMount() {
-        //console.log(firebase.auth().currentUser.getToken())
-            setInterval(() => {
-                this.setState({
-                    curTime: new Date().toLocaleString()
-                })
-            }, 1000)
+        axios.get('http://localhost:3000/users')
+            .then(response => this.setState({name: JSON.stringify(response.data.username)}))
+
+        console.log(firebase.auth().currentUser.uid);
+
+
+        setInterval(() => {
+            this.setState({
+                curTime: new Date().toLocaleString()
+            })
+        }, 1000)
     }
 
     render() {
@@ -36,7 +43,7 @@ export default class UserProfile extends Component {
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
                 <View style={styles.nameCont}>
-                    <Text style={styles.nameText}>Name Here</Text>
+                    <Text style={styles.nameText}>{this.state.name}</Text>
                 </View>
                 <View style={styles.progressBarCont}>
                     <Progress.Bar
@@ -65,13 +72,17 @@ export default class UserProfile extends Component {
                 <View style={styles.teamPageCreateGoalBtnCont}>
                     <TouchableOpacity
                         style={styles.teamPageButton}
-                        onPress={() => {Actions.team()}}
+                        onPress={() => {
+                            Actions.team()
+                        }}
                         color='silver'>
                         <Text style={styles.signUpText}>Team Page</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.teamPageButton}
-                        onPress={() => {Actions.goalCreate()}}
+                        onPress={() => {
+                            Actions.goalCreate()
+                        }}
                         color='silver'>
                         <Text style={styles.signUpText}>Create Goal</Text>
                     </TouchableOpacity>

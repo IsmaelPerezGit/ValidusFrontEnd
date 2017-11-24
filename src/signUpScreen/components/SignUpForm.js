@@ -23,6 +23,7 @@ class SignUpForm extends Component {
     onButtonPress() {
         const {email, username, password, verifyPassword, teamId} = this.state;
 
+
         if (email === '' || username === '' || password === '') {
             return alert('Must fill in all fields')
         } else if (password !== verifyPassword) {
@@ -31,13 +32,13 @@ class SignUpForm extends Component {
             return alert('password must be at least 6 characters long')
         }
         return (
-            axios.post('http://localhost:3000/users/new', {
-                email: email,
-                username: username,
-                user_token: password,
-                team_id: teamId
-            }))
-            .then(() => firebase.auth().createUserWithEmailAndPassword(email, password))
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(() => axios.post('http://localhost:3000/users/new', {
+                    email: email,
+                    username: username,
+                    user_token: firebase.auth().currentUser.uid,
+                    team_id: teamId
+                })))
     }
 
     render() {
