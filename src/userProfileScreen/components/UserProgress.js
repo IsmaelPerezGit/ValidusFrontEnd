@@ -7,7 +7,7 @@ const UserProgress = (props) => {
         <View>
             <View style={styles.nameCont}>
                 <Text style={styles.nameText}>
-                    {props.user}
+                    {props.username}
                 </Text>
             </View>
             <View style={styles.progressBarCont}>

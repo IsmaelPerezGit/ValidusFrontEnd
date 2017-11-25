@@ -20,13 +20,13 @@ export default class UserProfile extends Component {
 
     state = {
         curTime: null,
-        user: [],
+        users: [],
         user_token: '',
     };
 
     componentWillMount() {
         axios.get('http://localhost:3000/users')
-            .then(response => this.setState({user: response.data[0].username}));
+            .then(response => this.setState({users: response.data[0].username}));
 
         console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
 
@@ -43,7 +43,7 @@ export default class UserProfile extends Component {
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-                <UserProgress user={this.state.user}/>
+                <UserProgress username={this.state.users}/>
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>

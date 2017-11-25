@@ -9,7 +9,6 @@
 	"dependencies": {
 		"axios": "^0.17.1",
 		"firebase": "^4.6.2",
-		"moment": "^2.19.2",
 		"react": "^16.1.1",
 		"react-native": "^0.50.3",
 		"react-native-checkbox": "^2.0.0",
