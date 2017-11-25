@@ -16,9 +16,6 @@ import axios from 'axios';
 export default class Landing extends Component {
 
     componentWillMount() {
-        // axios.get('http://localhost:3000/users')
-        //     .then(response => console.log('this is the response' + JSON.stringify(response.data)));
-
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({loggedIn: true});

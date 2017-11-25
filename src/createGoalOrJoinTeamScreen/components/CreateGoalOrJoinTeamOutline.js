@@ -5,12 +5,17 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 export default class CreateGoalOrJoin extends Component {
 
-    onButtonPress() {
+    onCreateButtonPress() {
        // const { email, password } = this.state;
-        alert("This does nothing");
+       Actions.goalCreate();
+    }
+
+    onJoinButtonPress() {
+        Actions.teamsList();
     }
 
     render () {
@@ -20,13 +25,13 @@ export default class CreateGoalOrJoin extends Component {
                 <View style={styles.btnCont}>
                     <TouchableOpacity
                         style={styles.signUpButton}
-                        onPress={() => this.onButtonPress()}
+                        onPress={() => this.onCreateButtonPress()}
                         color='silver'>
                         <Text style={styles.signUpText}>Create Goal</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.signUpButton}
-                        onPress={() => this.onButtonPress()}
+                        onPress={() => this.onJoinButtonPress()}
                         color='silver'>
                         <Text style={styles.signUpText}>Choose Team</Text>
                     </TouchableOpacity>

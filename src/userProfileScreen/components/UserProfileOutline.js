@@ -18,36 +18,40 @@ export default class UserProfile extends Component {
             curTime: null,
             username: '',
             user_token: '',
+            users: []
         };
     }
 
-
-
-    componentWillMount() {
-        axios.get('http://localhost:3000/users')
-            .then(response => this.setState({username: response.data.map(user=>{
-                if(user.user_token == firebase.auth().currentUser.uid){
-                    return user.username
-                }
-            })}));
-
+    componentDidMount() {
+        this.getData();
+        //this.date();
         console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
-
-        // setInterval(() => {
-        //     this.setState({
-        //         curTime: new Date().toLocaleString()
-        //     })
-        // }, 1000)
     }
 
+    date()  {
+        setInterval(() => {
+            this.setState({
+                curTime: new Date().toLocaleString()
+            })
+        }, 1000)
+    };
+
+    getData()  {
+        axios.get('http://localhost:3000/users')
+        .then(response => this.setState({username: response.data.map(user=>{
+            if(user.user_token == firebase.auth().currentUser.uid){
+                return user.username
+            }
+        })}));
+    };
+
     render() {
-        console.log(this.state)
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-               <UserProgress username={this.state.username}/>
+                {!this.state.username ? <Text>loading...</Text> : <UserProgress username={this.state.username}/>}
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>

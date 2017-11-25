@@ -13,10 +13,12 @@ export default class App extends Component {
             storageBucket: 'validus-c7c9e.appspot.com',
             messagingSenderId: '510343967240'
         };
+
         firebase.initializeApp(config);
     }
 
     render() {
+        console.log(this.state)
         return (
             <RouterComponent/>
         );
