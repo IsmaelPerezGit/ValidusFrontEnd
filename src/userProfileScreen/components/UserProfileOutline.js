@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 import axios from 'axios';
+import UserProgress from './UserProgress';
 
 export default class UserProfile extends Component {
-
     constructor(props) {
         super(props);
 
@@ -20,13 +20,13 @@ export default class UserProfile extends Component {
 
     state = {
         curTime: null,
-        name: [],
+        user: [],
         user_token: '',
     };
 
     componentWillMount() {
         axios.get('http://localhost:3000/users')
-            .then(response => this.setState({name: response.data[0].username}));
+            .then(response => this.setState({user: response.data[0].username}));
 
         console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
 
@@ -43,20 +43,9 @@ export default class UserProfile extends Component {
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-                <View style={styles.nameCont}>
-                    <Text style={styles.nameText}>{this.state.name}</Text>
-                </View>
-                <View style={styles.progressBarCont}>
-                    <Progress.Bar
-                        progress={.5}
-                        height={20}
-                        animated={true}
-                        color={'#b21726'}
-                        borderWidth={3}/>
-                    <View style={styles.daysLeftCont}>
-                        <Text style={styles.daysLeftText}>Days Left: 7</Text>
-                    </View>
-                </View>
+
+                <UserProgress user={this.state.user}/>
+
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>
@@ -183,4 +172,3 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
 });
-
