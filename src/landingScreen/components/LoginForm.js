@@ -19,6 +19,7 @@ export default class LoginForm extends Component {
             password: '',
             error: '',
             loading: false,
+            user_token:''
         };
     }
 
@@ -40,8 +41,10 @@ export default class LoginForm extends Component {
             email: '',
             password: '',
             loading: false,
-            error: ''
+            error: '',
+            user_token: firebase.auth().currentUser.uid
         })
+        console.log(`this is the user token: ${firebase.auth().currentUser.uid}`)
     }
 
     renderButton() {

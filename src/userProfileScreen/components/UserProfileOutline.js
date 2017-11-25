@@ -17,17 +17,18 @@ export default class UserProfile extends Component {
         super(props);
         this.state = {
             curTime: null,
-            name: ''
+            name: '',
+            user_token:'',
+            users: []
         };
 
     }
 
     componentWillMount() {
-        axios.get('http://localhost:3000/users')
-            .then(response => this.setState({name: JSON.stringify(response.data.username)}))
+         axios.get('http://localhost:3000/users')
+             .then(response => this.setState({name: JSON.stringify(response.data)}))
 
-        console.log(firebase.auth().currentUser.uid);
-
+        console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
 
         setInterval(() => {
             this.setState({
