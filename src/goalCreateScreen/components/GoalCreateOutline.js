@@ -9,13 +9,39 @@ import {
 import {Actions} from 'react-native-router-flux';
 import ChooseDays from './ChooseDays';
 import TeamSize from './TeamSizeLimit'
-import StartEndDateForm from './StartEndDateForm';
+import StartDateForm from './StartDateForm';
 
 export default class GoalCreate extends Component {
 
+    constructor (props) {
+        super(props);
+        state = {
+            startDate: '',
+            weeks: 0,
+            sun:false,
+            mon:false,
+            tues:false,
+            wed:false,
+            thurs:false,
+            fri:false,
+            sat:false,
+            teamSize:0
+        }
+    }
+
     onButtonPress() {
-        const { email, password } = this.state;
-        alert("This does nothing");
+        const {
+            startDate,
+            weeks,
+            sun,
+            mon,
+            tues,
+            wed,
+            thurs,
+            fri,
+            sat,
+            teamSize } = this.state;
+
     }
 
     render() {
@@ -25,7 +51,7 @@ export default class GoalCreate extends Component {
                     <View style={styles.titleCont}>
                         <Text style={styles.title}>Create Your Goal</Text>
                     </View>
-                    <StartEndDateForm/>
+                    <StartDateForm/>
                     <ChooseDays/>
                     <View style={styles.teamSizeComponentCont}>
                      <TeamSize/>

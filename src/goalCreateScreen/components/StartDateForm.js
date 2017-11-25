@@ -6,10 +6,10 @@ import {
     StyleSheet
 } from 'react-native';
 
-class StartEndDateForm extends Component {
+class StartDateForm extends Component {
     state = {
         startDate: '',
-        endDate: ''
+        weeks: ''
     };
 
     render() {
@@ -22,7 +22,7 @@ class StartEndDateForm extends Component {
                     value={this.state.startDate}
                     onChangeText={(startDate) => this.setState({startDate})}/>
                 <TextInput
-                    placeholder='end date'
+                    placeholder='how many weeks'
                     placeholderTextColor='grey'
                     style={styles.startEndFields}
                     value={this.state.endDate}
@@ -31,7 +31,7 @@ class StartEndDateForm extends Component {
         );
     }
 };
-export default StartEndDateForm;
+export default StartDateForm;
 
 const styles = StyleSheet.create({
     formCont: {
