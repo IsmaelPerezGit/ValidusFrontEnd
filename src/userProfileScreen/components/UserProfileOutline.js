@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
-import {Actions} from 'react-native-router-flux';
 import {
     Text,
     ScrollView,
@@ -11,6 +10,7 @@ import {
 import * as Progress from 'react-native-progress';
 import axios from 'axios';
 import UserProgress from './UserProgress';
+import TeamAndGoalBtns from './TeamAndGoalBtns';
 
 export default class UserProfile extends Component {
     constructor(props) {
@@ -43,9 +43,7 @@ export default class UserProfile extends Component {
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-
                 <UserProgress user={this.state.user}/>
-
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>
@@ -59,24 +57,7 @@ export default class UserProfile extends Component {
                         <Text style={styles.signUpText}>Complete Workout</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.teamPageCreateGoalBtnCont}>
-                    <TouchableOpacity
-                        style={styles.teamPageButton}
-                        onPress={() => {
-                            Actions.team()
-                        }}
-                        color='silver'>
-                        <Text style={styles.signUpText}>Team Page</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.teamPageButton}
-                        onPress={() => {
-                            Actions.goalCreate()
-                        }}
-                        color='silver'>
-                        <Text style={styles.signUpText}>Create Goal</Text>
-                    </TouchableOpacity>
-                </View>
+                <TeamAndGoalBtns/>
             </ScrollView>
         );
     }
@@ -105,30 +86,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,
-    },
-    nameCont: {
-        marginTop: '13%',
-        alignItems: 'center',
-        flex: 1
-    },
-    nameText: {
-        color: 'silver',
-        fontSize: 20,
-        fontWeight: '500',
-    },
-    daysLeftCont: {
-        marginTop: 20,
-        alignItems: 'center',
-        flex: 1
-    },
-    daysLeftText: {
-        color: 'silver',
-        fontSize: 20,
-        fontWeight: '500',
-    },
-    progressBarCont: {
-        alignItems: 'center',
-        marginTop: 10
     },
     text: {
         color: 'silver'
@@ -159,16 +116,5 @@ const styles = StyleSheet.create({
         color: 'silver',
         fontWeight: '600',
         fontSize: 16,
-    },
-    teamPageCreateGoalBtnCont: {
-        height: '5%',
-        width: '100%',
-        marginTop: '28%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 3,
-    },
-    teamPageButton: {
-        marginBottom: 15
     },
 });
