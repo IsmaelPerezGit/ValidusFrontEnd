@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import * as Progress from 'react-native-progress';
 import axios from 'axios';
 import UserProgress from './UserProgress';
 import TeamAndGoalBtns from './TeamAndGoalBtns';
@@ -15,35 +14,40 @@ import TeamAndGoalBtns from './TeamAndGoalBtns';
 export default class UserProfile extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            curTime: null,
+            username: '',
+            user_token: '',
+        };
     }
 
-    state = {
-        curTime: null,
-        users: [],
-        user_token: '',
-    };
+
 
     componentWillMount() {
         axios.get('http://localhost:3000/users')
-            .then(response => this.setState({users: response.data[0].username}));
+            .then(response => this.setState({username: response.data.map(user=>{
+                if(user.user_token == firebase.auth().currentUser.uid){
+                    return user.username
+                }
+            })}));
 
         console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
 
-        setInterval(() => {
-            this.setState({
-                curTime: new Date().toLocaleString()
-            })
-        }, 1000)
+        // setInterval(() => {
+        //     this.setState({
+        //         curTime: new Date().toLocaleString()
+        //     })
+        // }, 1000)
     }
 
     render() {
+        console.log(this.state)
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-                <UserProgress username={this.state.users}/>
+               <UserProgress username={this.state.username}/>
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>

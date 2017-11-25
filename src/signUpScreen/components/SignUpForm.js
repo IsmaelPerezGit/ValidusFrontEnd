@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import axios from 'axios';
+import {Actions} from 'react-native-router-flux';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -23,7 +24,6 @@ class SignUpForm extends Component {
     onButtonPress() {
         const {email, username, password, verifyPassword, teamId} = this.state;
 
-
         if (email === '' || username === '' || password === '') {
             return alert('Must fill in all fields')
         } else if (password !== verifyPassword) {
@@ -38,7 +38,9 @@ class SignUpForm extends Component {
                     username: username,
                     user_token: firebase.auth().currentUser.uid,
                     team_id: teamId
-                })))
+                }))
+                .then(() => Actions.createGoalOrJoin()))
+
     }
 
     render() {
