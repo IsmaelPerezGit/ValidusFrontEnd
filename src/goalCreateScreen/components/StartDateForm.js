@@ -31,11 +31,10 @@ class StartDateForm extends Component {
                             position: 'absolute',
                             left: 0,
                             top: 4,
-                            marginLeft: 0
+                            marginLeft: 5
                         },
                         dateInput: {
                             marginLeft: 0,
-                            backgroundColor: 'black'
                         }
                     }}
                     onDateChange={(date) => {this.setState({date: date})}}/>
