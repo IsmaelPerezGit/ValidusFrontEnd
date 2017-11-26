@@ -8,7 +8,7 @@ import DatePicker from 'react-native-datepicker'
 
 class StartDateForm extends Component {
     state = {
-        date: '12-01-2017',
+        date: '',
         weeks: '',
         totalDays: 0
     };

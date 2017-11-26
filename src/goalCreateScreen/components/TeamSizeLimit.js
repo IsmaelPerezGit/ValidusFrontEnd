@@ -10,7 +10,7 @@ class TeamSize extends Component{
     constructor (props) {
         super(props);
         this.state = {
-            teamSize: ''
+            teamSize: '1'
         };
 
     }
@@ -18,13 +18,18 @@ class TeamSize extends Component{
         return this.setState({teamSize})
     }
     render() {
+        console.log(this.state);
         return (
             <View>
                 <View style={styles.sizeLimitTextCont}>
                     <Text style={styles.text}>Team Size Limit</Text>
                 </View>
                 <View style={styles.pickerCont}>
-                    <Picker style={styles.picker}>
+                    <Picker
+                        style={styles.picker}
+                        selectedValue = {this.state.teamSize}
+                        onValueChange = {(itemValue, itemIndex) => this.setState({teamSize:itemValue})}
+                    >
                         <Picker.Item
                             color='white'
                             label='1'
