@@ -10,8 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import firebase from 'firebase';
 import Spinner from './Spinner';
 import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
-import axios from 'axios';
+import SignUpButton from './SignUpButton';
 
 export default class Landing extends Component {
 
@@ -52,7 +51,7 @@ export default class Landing extends Component {
                 return (
                     <View style={styles.rendCont}>
                         <LoginForm/>
-                        <SignUpForm/>
+                        <SignUpButton/>
                     </View>);
             default:
                 return <Spinner/>

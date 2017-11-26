@@ -8,8 +8,7 @@ import {
 } from 'react-native';
 
 
-export default SignUpForm = () => {
-
+export default SignUpButton = () => {
     return (
         <View style={styles.viewStyle}>
             <Text style={styles.text}>Not A Member?</Text>

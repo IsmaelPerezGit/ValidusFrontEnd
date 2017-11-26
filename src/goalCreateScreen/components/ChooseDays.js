@@ -12,37 +12,37 @@ const ChooseDays = () => {
             <View style={styles.checkBoxCont}>
                 <CheckBox
                     label='Sunday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Monday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Tuesday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Wednesday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Thursday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Friday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Saturday'
-                    checked={true}
+                    checked={false}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
             </View>
