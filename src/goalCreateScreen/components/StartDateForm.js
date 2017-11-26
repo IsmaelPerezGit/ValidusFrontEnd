@@ -9,10 +9,12 @@ import DatePicker from 'react-native-datepicker'
 class StartDateForm extends Component {
     state = {
         date: '12-01-2017',
-        weeks: ''
+        weeks: '',
+        totalDays: 0
     };
 
     render() {
+        console.log(this.state)
         return (
             <View style={styles.formCont}>
                 <View style={styles.datePickerCont}>
@@ -43,8 +45,8 @@ class StartDateForm extends Component {
                     placeholder='how many weeks'
                     placeholderTextColor='grey'
                     style={styles.weeksInput}
-                    value={this.state.endDate}
-                    onChangeText={(endDate) => this.setState({endDate})}/>
+                    value={this.state.weeks}
+                    onChangeText={(weeks) => this.setState({weeks})}/>
             </View>
         );
     }
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         width:310,
         backgroundColor: 'black',
         borderWidth: 2,
-        borderColor: 'orange',
+        borderColor: '#222222',
         borderRadius:1
     },
     weeksInput: {

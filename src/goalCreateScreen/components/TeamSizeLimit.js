@@ -6,59 +6,72 @@ import {
     StyleSheet
 } from 'react-native';
 
-const TeamSize = () => {
-    return (
-        <View>
-            <View style={styles.sizeLimitTextCont}>
-                <Text style={styles.text}>Team Size Limit</Text>
+class TeamSize extends Component{
+    constructor (props) {
+        super(props);
+        this.state = {
+            teamSize: ''
+        };
+
+    }
+    teamSizeChanger() {
+        return this.setState({teamSize})
+    }
+    render() {
+        return (
+            <View>
+                <View style={styles.sizeLimitTextCont}>
+                    <Text style={styles.text}>Team Size Limit</Text>
+                </View>
+                <View style={styles.pickerCont}>
+                    <Picker style={styles.picker}>
+                        <Picker.Item
+                            color='white'
+                            label='1'
+                            value='1'
+                        />
+                        <Picker.Item
+                            color='white'
+                            label='2'
+                            value='2'/>
+                        <Picker.Item
+                            color='white'
+                            label='3'
+                            value='3'/>
+                        <Picker.Item
+                            color='white'
+                            label='4'
+                            value='4'/>
+                        <Picker.Item
+                            color='white'
+                            label='5'
+                            value='5'/>
+                        <Picker.Item
+                            color='white'
+                            label='6'
+                            value='6'/>
+                        <Picker.Item
+                            color='white'
+                            label='7'
+                            value='7'/>
+                        <Picker.Item
+                            color='white'
+                            label='8'
+                            value='8'/>
+                        <Picker.Item
+                            color='white'
+                            label='9'
+                            value='9'/>
+                        <Picker.Item
+                            color='white'
+                            label='10'
+                            value='10'
+                        />
+                    </Picker>
+                </View>
             </View>
-            <View style={styles.pickerCont}>
-                <Picker style={styles.picker}>
-                    <Picker.Item
-                        color='white'
-                        label='1'
-                        value='1'/>
-                    <Picker.Item
-                        color='white'
-                        label='2'
-                        value='2'/>
-                    <Picker.Item
-                        color='white'
-                        label='3'
-                        value='3'/>
-                    <Picker.Item
-                        color='white'
-                        label='4'
-                        value='4'/>
-                    <Picker.Item
-                        color='white'
-                        label='5'
-                        value='5'/>
-                    <Picker.Item
-                        color='white'
-                        label='6'
-                        value='6'/>
-                    <Picker.Item
-                        color='white'
-                        label='7'
-                        value='7'/>
-                    <Picker.Item
-                        color='white'
-                        label='8'
-                        value='8'/>
-                    <Picker.Item
-                        color='white'
-                        label='9'
-                        value='9'/>
-                    <Picker.Item
-                        color='white'
-                        label='10'
-                        value='10'
-                    />
-                </Picker>
-            </View>
-        </View>
-    );
+        );
+    }
 };
 export default TeamSize;
 

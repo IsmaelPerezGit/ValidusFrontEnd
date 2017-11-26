@@ -5,50 +5,65 @@ import {
     StyleSheet} from 'react-native';
 import CheckBox from 'react-native-checkbox';
 
-const ChooseDays = (props) => {
+class ChooseDays extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            weeks: 0,
+            sun:false,
+            mon:false,
+            tues:false,
+            wed:false,
+            thurs:false,
+            fri:false,
+            sat:false,
+        }
+    }
 
-    return (
-        <View style={styles.chooseDaysCont}>
-            <Text style={styles.text}>Choose your workout days</Text>
-            <View style={styles.checkBoxCont}>
-                <CheckBox
-                    label='Sunday'
-                    checked={props.sun}
-                    onChange={this.onCheckBoxSelect}
-                />
-                <CheckBox
-                    label='Monday'
-                    checked={props.mon}
-                    onChange={(checked) => console.log('I am checked', checked)}
-                />
-                <CheckBox
-                    label='Tuesday'
-                    checked={props.tues}
-                    onChange={(checked) => console.log('I am checked', checked)}
-                />
-                <CheckBox
-                    label='Wednesday'
-                    checked={props.wed}
-                    onChange={(checked) => console.log('I am checked', checked)}
-                />
-                <CheckBox
-                    label='Thursday'
-                    checked={props.thurs}
-                    onChange={(checked) => console.log('I am checked', checked)}
-                />
-                <CheckBox
-                    label='Friday'
-                    checked={props.fri}
-                    onChange={(checked) => console.log('I am checked', checked)}
-                />
-                <CheckBox
-                    label='Saturday'
-                    checked={props.sat}
-                    onChange={(checked) => console.log('I am checked', checked)}
-                />
+    render() {
+        return (
+            <View style={styles.chooseDaysCont}>
+                <Text style={styles.text}>Choose your workout days</Text>
+                <View style={styles.checkBoxCont}>
+                    <CheckBox
+                        label='Sunday'
+                        checked={this.state.sun}
+                        onChange={(sun) => this.setState({sun:!sun})}
+                    />
+                    <CheckBox
+                        label='Monday'
+                        checked={this.state.mon}
+                        onChange={(mon) => this.setState({mon:!mon})}
+                    />
+                    <CheckBox
+                        label='Tuesday'
+                        checked={this.state.tues}
+                        onChange={(tues) => this.setState({tues:!tues})}
+                    />
+                    <CheckBox
+                        label='Wednesday'
+                        checked={this.state.wed}
+                        onChange={(wed) => this.setState({wed:!wed})}
+                    />
+                    <CheckBox
+                        label='Thursday'
+                        checked={this.state.thurs}
+                        onChange={(thurs) => this.setState({thurs:!thurs})}
+                    />
+                    <CheckBox
+                        label='Friday'
+                        checked={this.state.fri}
+                        onChange={(fri) => this.setState({fri:!fri})}
+                    />
+                    <CheckBox
+                        label='Saturday'
+                        checked={this.state.sat}
+                        onChange={(sat) => this.setState({sat:!sat})}
+                    />
+                </View>
             </View>
-        </View>
-    );
+        );
+    }
 };
 
 export default ChooseDays;
