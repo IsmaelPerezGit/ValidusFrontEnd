@@ -18,8 +18,8 @@ class RouterComponent extends Component {
                 sceneStyle={{backgroundColor: 'black'}}>
                 <Scene key="root">
                     <Scene key="createGoalOrJoin" component={CreateGoalOrJoin} title=""/>
-                    <Scene key="goalCreate" component={GoalCreate} title="create your goal"/>
-                    <Scene key="landing" component={Landing} title="login" initial/>
+                    <Scene key="goalCreate" component={GoalCreate} title="create your goal" initial/>
+                    <Scene key="landing" component={Landing} title="login" />
                     <Scene key="profileEdit" component={ProfileEdit} title="edit profile"/>
                     <Scene key="signUp" component={SignUp} title="sign up"/>
                     <Scene key="team" component={Team} title="team stats"/>

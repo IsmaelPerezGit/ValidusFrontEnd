@@ -2,29 +2,53 @@ import React, {Component} from 'react';
 import {
     View,
     TextInput,
-    Button,
+    Text,
     StyleSheet
 } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 
 class StartDateForm extends Component {
     state = {
-        startDate: '',
+        date: '2017-11-15',
         weeks: ''
     };
 
     render() {
         return (
             <View style={styles.formCont}>
-                <TextInput
-                    placeholder='start date'
-                    placeholderTextColor='grey'
-                    style={styles.startEndFields}
-                    value={this.state.startDate}
-                    onChangeText={(startDate) => this.setState({startDate})}/>
+                <View style={styles.startDateTextCont}>
+                    <Text style={styles.startDateText}>Start Date</Text>
+                </View>
+                <View style={styles.datePickerCont}>
+                <DatePicker
+                    style={{width: 200}}
+                    date={this.state.startDate}
+                    mode="date"
+                    placeholder="start date"
+                    format="MM-DD-YYYY"
+                    minDate="2017-05-01"
+                    maxDate="2018-06-01"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                        dateIcon: {
+                            position: 'absolute',
+                            left: 0,
+                            top: 4,
+                            marginLeft: 0
+                        },
+                        dateInput: {
+                            marginLeft: 0
+                        }
+                        // ... You can check the source to find the other keys.
+                    }}
+                    onDateChange={(date) => {this.setState({startDate: date})}}
+                />
+                </View>
                 <TextInput
                     placeholder='how many weeks'
                     placeholderTextColor='grey'
-                    style={styles.startEndFields}
+                    style={styles.weeksInput}
                     value={this.state.endDate}
                     onChangeText={(endDate) => this.setState({endDate})}/>
             </View>
@@ -37,7 +61,19 @@ const styles = StyleSheet.create({
     formCont: {
         alignItems: 'center'
     },
-    startEndFields: {
+    datePickerCont: {
+        alignItems:'center',
+        marginTop:10,
+        marginBottom:20
+    },
+    startDateTextCont: {
+        alignItems: 'center',
+        marginTop: 40
+    },
+    startDateText: {
+       color:'orange'
+    },
+    weeksInput: {
         paddingLeft: 5,
         paddingRight: 5,
         fontSize: 18,

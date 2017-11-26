@@ -15,7 +15,7 @@ export default class GoalCreate extends Component {
 
     constructor (props) {
         super(props);
-        state = {
+        this.state = {
             startDate: '',
             weeks: 0,
             sun:false,
@@ -29,21 +29,6 @@ export default class GoalCreate extends Component {
         }
     }
 
-    onButtonPress() {
-        const {
-            startDate,
-            weeks,
-            sun,
-            mon,
-            tues,
-            wed,
-            thurs,
-            fri,
-            sat,
-            teamSize } = this.state;
-
-    }
-
     render() {
         return (
             <ScrollView>
@@ -52,7 +37,15 @@ export default class GoalCreate extends Component {
                         <Text style={styles.title}>Create Your Goal</Text>
                     </View>
                     <StartDateForm/>
-                    <ChooseDays/>
+                    <ChooseDays
+                        sun={this.state.sun}
+                        mon={this.state.mon}
+                        tues={this.state.tues}
+                        wed={this.state.wed}
+                        thurs={this.state.thurs}
+                        fri={this.state.fri}
+                        sat={this.state.sat}
+                    />
                     <View style={styles.teamSizeComponentCont}>
                      <TeamSize/>
                     </View>

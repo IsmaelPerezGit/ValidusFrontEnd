@@ -5,44 +5,45 @@ import {
     StyleSheet} from 'react-native';
 import CheckBox from 'react-native-checkbox';
 
-const ChooseDays = () => {
+const ChooseDays = (props) => {
+
     return (
         <View style={styles.chooseDaysCont}>
             <Text style={styles.text}>Choose your workout days</Text>
             <View style={styles.checkBoxCont}>
                 <CheckBox
                     label='Sunday'
-                    checked={false}
-                    onChange={(checked) => console.log('I am checked', checked)}
+                    checked={props.sun}
+                    onChange={this.onCheckBoxSelect}
                 />
                 <CheckBox
                     label='Monday'
-                    checked={false}
+                    checked={props.mon}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Tuesday'
-                    checked={false}
+                    checked={props.tues}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Wednesday'
-                    checked={false}
+                    checked={props.wed}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Thursday'
-                    checked={false}
+                    checked={props.thurs}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Friday'
-                    checked={false}
+                    checked={props.fri}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
                 <CheckBox
                     label='Saturday'
-                    checked={false}
+                    checked={props.sat}
                     onChange={(checked) => console.log('I am checked', checked)}
                 />
             </View>
