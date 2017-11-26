@@ -2,32 +2,28 @@ import React, {Component} from 'react';
 import {
     View,
     TextInput,
-    Text,
     StyleSheet
 } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 
 class StartDateForm extends Component {
     state = {
-        date: '2017-11-15',
+        date: '12-01-2017',
         weeks: ''
     };
 
     render() {
         return (
             <View style={styles.formCont}>
-                <View style={styles.startDateTextCont}>
-                    <Text style={styles.startDateText}>Start Date</Text>
-                </View>
                 <View style={styles.datePickerCont}>
                 <DatePicker
-                    style={{width: 200}}
-                    date={this.state.startDate}
+                    style={styles.datePicker}
+                    date={this.state.date}
                     mode="date"
-                    placeholder="start date"
+                    placeholder="Start Date"
                     format="MM-DD-YYYY"
-                    minDate="2017-05-01"
-                    maxDate="2018-06-01"
+                    minDate="12-01-2017"
+                    maxDate="02-01-2018"
                     confirmBtnText="Confirm"
                     cancelBtnText="Cancel"
                     customStyles={{
@@ -38,12 +34,11 @@ class StartDateForm extends Component {
                             marginLeft: 0
                         },
                         dateInput: {
-                            marginLeft: 0
+                            marginLeft: 0,
+                            backgroundColor: 'black'
                         }
-                        // ... You can check the source to find the other keys.
                     }}
-                    onDateChange={(date) => {this.setState({startDate: date})}}
-                />
+                    onDateChange={(date) => {this.setState({date: date})}}/>
                 </View>
                 <TextInput
                     placeholder='how many weeks'
@@ -63,15 +58,15 @@ const styles = StyleSheet.create({
     },
     datePickerCont: {
         alignItems:'center',
-        marginTop:10,
+        marginTop:50,
         marginBottom:20
     },
-    startDateTextCont: {
-        alignItems: 'center',
-        marginTop: 40
-    },
-    startDateText: {
-       color:'orange'
+    datePicker:{
+        width:310,
+        backgroundColor: 'black',
+        borderWidth: 2,
+        borderColor: 'orange',
+        borderRadius:1
     },
     weeksInput: {
         paddingLeft: 5,
@@ -80,7 +75,6 @@ const styles = StyleSheet.create({
         lineHeight: 23,
         height: 40,
         width: '85%',
-        borderColor: 'black',
         backgroundColor: '#222222',
         borderWidth: 1,
         marginTop: '5%',
