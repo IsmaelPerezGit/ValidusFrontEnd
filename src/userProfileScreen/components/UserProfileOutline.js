@@ -16,7 +16,6 @@ export default class UserProfile extends Component {
         super(props);
         this.state = {
             curTime: null,
-            username: '',
             user_token: '',
             user: [],
             userId: ''
@@ -25,36 +24,38 @@ export default class UserProfile extends Component {
 
     componentDidMount() {
         this.getUserId();
-        this.getUser();
-        //this.getData();
+        //this.getUser();
         //this.date();
         console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
     }
 
-    date()  {
+    date() {
         setInterval(() => {
             this.setState({
                 curTime: new Date().toLocaleString()
             })
         }, 1000)
     };
-    
-    getUser() {
-        axios.get(`http://localhost:3000/users/${this.state.userId}`)
-            .then(res => this.setState({user:res.data[0]}))
-    }
 
+    //ask question about this
     getUserId() {
         axios.get('http://localhost:3000/users')
-            .then(response => this.setState({userId: response.data.map(user=>{
-                if(user.user_token == firebase.auth().currentUser.uid){
-                    return user.id.toString()
-                }
-            })}));
+            .then(response => {
+                const id = response.data.filter(user => {
+                    return user.user_token === firebase.auth().currentUser.uid
+                })
+                this.setState({userId: id})
+            });
+    }
+
+    getUser() {
+        axios.get(`http://localhost:3000/users/${this.state.userId}`)
+            .then(res => this.setState({user: res.data}))
     }
 
     render() {
-       console.log(`this is the user: ${this.state.user.username}`);
+        console.log(this.state.userId);
+        //console.log('this is the user info' + this.state.user);
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
