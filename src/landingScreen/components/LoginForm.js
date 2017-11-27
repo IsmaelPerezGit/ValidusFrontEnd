@@ -43,7 +43,7 @@ export default class LoginForm extends Component {
             loading: false,
             error: '',
             user_token: firebase.auth().currentUser.uid
-        })
+        });
         console.log(`this is the user token: ${firebase.auth().currentUser.uid}`)
     }
 
