@@ -15,7 +15,6 @@ import StartDateForm from './StartDateForm';
 import DatePicker from 'react-native-datepicker'
 
 export default class GoalCreate extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -31,49 +30,41 @@ export default class GoalCreate extends Component {
             startDate: ''
         }
     }
-
     onToggleSun() {
         this.setState({
             sun: !this.state.sun
         })
     }
-
     onToggleMon() {
         this.setState({
             mon: !this.state.mon
         })
     }
-
     onToggleTues() {
         this.setState({
             tues: !this.state.tues
         })
     }
-
     onToggleWed() {
         this.setState({
             wed: !this.state.wed
         })
     }
-
     onToggleThurs() {
         this.setState({
             thurs: !this.state.thurs
         })
     }
-
     onToggleFri() {
         this.setState({
             fri: !this.state.fri
         })
     }
-
     onToggleSat() {
         this.setState({
             sat: !this.state.sat
         })
     }
-
     render() {
         console.log(this.state)
         return (
@@ -123,8 +114,7 @@ export default class GoalCreate extends Component {
                         toggleWed={this.onToggleWed.bind(this)}
                         toggleThurs={this.onToggleThurs.bind(this)}
                         toggleFri={this.onToggleFri.bind(this)}
-                        toggleSat={this.onToggleSat.bind(this)}
-                    />
+                        toggleSat={this.onToggleSat.bind(this)}/>
                     <View style={styles.teamSizeComponentCont}>
                         <View>
                             <View style={styles.sizeLimitTextCont}>
@@ -134,13 +124,11 @@ export default class GoalCreate extends Component {
                                 <Picker
                                     style={styles.picker}
                                     selectedValue = {this.state.teamSize}
-                                    onValueChange = {(itemValue, itemIndex) => this.setState({teamSize:itemValue})}
-                                >
+                                    onValueChange = {(itemValue, itemIndex) => this.setState({teamSize:itemValue})}>
                                     <Picker.Item
                                         color='white'
                                         label='1'
-                                        value='1'
-                                    />
+                                        value='1'/>
                                     <Picker.Item
                                         color='white'
                                         label='2'
@@ -176,8 +164,7 @@ export default class GoalCreate extends Component {
                                     <Picker.Item
                                         color='white'
                                         label='10'
-                                        value='10'
-                                    />
+                                        value='10'/>
                                 </Picker>
                             </View>
                         </View>
@@ -186,8 +173,7 @@ export default class GoalCreate extends Component {
                         <TouchableOpacity
                             style={styles.createGoalButton}
                             onPress={() => {
-                                Actions.userProfile()
-                            }}
+                                Actions.userProfile()}}
                             color='silver'>
                             <Text style={styles.createGoalButtonText}>Create Goal</Text>
                         </TouchableOpacity>
@@ -222,7 +208,6 @@ const styles = StyleSheet.create({
     createGoalButtonCont: {
         marginTop: '10%',
         alignItems: 'center',
-        // backgroundColor: 'red',
         height: 40
     },
     createGoalButton: {
@@ -281,7 +266,6 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '20%',
         justifyContent: 'center',
-        // backgroundColor:'orange'
     },
     text: {
         fontSize: 20,
@@ -293,7 +277,5 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '40%',
         alignItems: 'center',
-        // backgroundColor: 'pink'
-    },
+    }
 });
-
