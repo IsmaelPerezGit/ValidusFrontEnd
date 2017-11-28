@@ -37,16 +37,6 @@ export default class UserProfile extends Component {
         }, 1000)
     };
 
-    // getUserId() {
-    //     axios.get('http://localhost:3000/users')
-    //         .then(response => {
-    //             const id = response.data.filter(user => {
-    //                 return user.user_token == firebase.auth().currentUser.uid
-    //             });
-    //             this.setState({userId: id[0]})
-    //         })
-    // }
-
     getUser() {
         axios.get('http://localhost:3000/users/' + firebase.auth().currentUser.uid)
             .then(res => {

@@ -5,21 +5,62 @@ import {
     ScrollView,
     StyleSheet
 } from 'react-native';
+import axios from 'axios';
 import Team from './Team';
 
-const TeamList = () => {
-    return (
-        <View style={styles.viewStyle}>
-            <Text style={styles.title}>Choose a Team</Text>
-            <ScrollView>
-                <Team/>
-            </ScrollView>
-        </View>
-    );
+class TeamList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            target: '',
+            startDate: '',
+            weeks: 0,
+            openSlots: 0,
+            days: '',
+            teams: [],
+            goals: []
+        }
+    }
+
+    componentWillMount() {
+        axios.get('http://localhost:3000/goals')
+            .then(res => {
+                console.log('this is thingk' + res.data)
+                this.setState({teams: res.data})
+            });
+    }
+
+
+    render() {
+
+        renderTeams =()=>  {
+           return this.state.teams.map((team) => {
+                return(
+                    <Text style={styles.title}>{team.target}</Text>
+                )
+            })
+        }
+
+        console.log(this.state.teams)
+
+        return (
+            <View style={styles.viewStyle}>
+                <Text style={styles.title}>Choose a Team</Text>
+                <ScrollView>
+                    <Team/>
+                </ScrollView>
+            </View>
+        );
+    }
 };
 export default TeamList;
 
 const styles = StyleSheet.create({
+    textCont: {
+        backgroundColor:'red',
+        height: '20%',
+        width: '20%'
+    },
     viewStyle: {
         flex: 1,
         height: '80%',

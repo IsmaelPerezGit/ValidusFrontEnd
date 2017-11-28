@@ -5,47 +5,77 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
+import axios from 'axios';
 
-const Team = () => {
-    return (
-        <View style={styles.cardContainer}>
-            <View style={styles.cardTextCont}>
-                <Text style={styles.cardHeader}>Team Name: Tornadoes</Text>
-                <Text style={styles.cardHeader}>Goal: Bills Goal</Text>
-                <Text style={styles.cardHeader}>Open Slots: 3</Text>
-                <Text style={styles.cardHeader}>Start Date: 12/12/2017</Text>
-                <Text style={styles.cardHeader}>End Date: 01/01/2018</Text>
+class Team extends Component {
+
+    constructor(props) {
+        super();
+        this.state = {
+            teams: []
+        };
+    }
+
+
+    componentWillMount() {
+        axios.get('http://localhost:3000/goals')
+            .then(res => {
+                this.setState({teams: res.data})
+            });
+    }
+
+    render() {
+        renderTeams =()=>  {
+            return this.state.teams.map((team) => {
+                return(
+                    <View key={team.id} style={styles.cardContainer}>
+                        <View style={styles.cardTextCont}>
+                            <Text style={styles.cardHeader}>Team Target: {team.target}</Text>
+                            <Text style={styles.cardHeader}>Start Date: {team.start_date}</Text>
+                            <Text style={styles.cardHeader}>Weeks: {team.weeks}</Text>
+                            <Text style={styles.cardHeader}>Open Slots: 3</Text>
+                            <Text style={styles.cardHeader}>Days: Mon, Wed, Fri</Text>
+                        </View>
+                        <View style={styles.btnCont}>
+                            <TouchableOpacity
+                                style={styles.JoinOrViewButton}
+                                onPress={printThing = () => {
+                                    alert("This does nothing")
+                                }}
+                                color='silver'>
+                                <Text style={styles.buttonText}>Join Team</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.JoinOrViewButton}
+                                onPress={printThing = () => {
+                                    alert("This does nothing")
+                                }}
+                                color='silver'>
+                                <Text style={styles.buttonText}>View Team</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                )
+            })
+        }
+
+        return (
+            <View >
+                {renderTeams()}
             </View>
-            <View style={styles.btnCont}>
-                <TouchableOpacity
-                    style={styles.JoinOrViewButton}
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
-                    color='silver'>
-                    <Text style={styles.buttonText}>Join Team</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.JoinOrViewButton}
-                    onPress={printThing = () => {
-                        alert("This does nothing")
-                    }}
-                    color='silver'>
-                    <Text style={styles.buttonText}>View Team</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
-};
+        );
+    }
+}
+
 export default Team;
 
 const styles = StyleSheet.create({
     cardContainer: {
+        flex:1,
         flexDirection: 'row',
         borderWidth: 5,
         borderRadius: 1,
         borderColor: '#b21726',
-        borderBottomWidth: 0,
         shadowColor: '#b21726',
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.1,
@@ -54,6 +84,7 @@ const styles = StyleSheet.create({
         elevation: 2,
         marginLeft: 5,
         marginRight: 5,
+        marginBottom:20,
         alignItems: 'center',
     },
     cardHeader: {
