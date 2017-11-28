@@ -10,14 +10,29 @@ class ChooseDays extends Component {
         super(props);
         this.state = {
             weeks: 0,
-            sun:false,
-            mon:false,
-            tues:false,
-            wed:false,
-            thurs:false,
-            fri:false,
-            sat:false,
         }
+    }
+
+    onToggleSun() {
+        this.props.toggleSun(this.state.sun)
+    }
+    onToggleMon() {
+        this.props.toggleMon(this.state.mon)
+    }
+    onToggleTues() {
+        this.props.toggleTues(this.state.tues)
+    }
+    onToggleWed() {
+        this.props.toggleWed(this.state.wed)
+    }
+    onToggleThurs() {
+        this.props.toggleThurs(this.state.thurs)
+    }
+    onToggleFri() {
+        this.props.toggleFri(this.state.fri)
+    }
+    onToggleSat() {
+        this.props.toggleSat(this.state.sat)
     }
 
     render() {
@@ -28,37 +43,37 @@ class ChooseDays extends Component {
                     <CheckBox
                         label='Sunday'
                         checked={this.state.sun}
-                        onChange={(sun) => this.setState({sun:!sun})}
+                        onChange={this.onToggleSun.bind(this)}
                     />
                     <CheckBox
                         label='Monday'
                         checked={this.state.mon}
-                        onChange={(mon) => this.setState({mon:!mon})}
+                        onChange={this.onToggleMon.bind(this)}
                     />
                     <CheckBox
                         label='Tuesday'
                         checked={this.state.tues}
-                        onChange={(tues) => this.setState({tues:!tues})}
+                        onChange={this.onToggleTues.bind(this)}
                     />
                     <CheckBox
                         label='Wednesday'
                         checked={this.state.wed}
-                        onChange={(wed) => this.setState({wed:!wed})}
+                        onChange={this.onToggleWed.bind(this)}
                     />
                     <CheckBox
                         label='Thursday'
                         checked={this.state.thurs}
-                        onChange={(thurs) => this.setState({thurs:!thurs})}
+                        onChange={this.onToggleThurs.bind(this)}
                     />
                     <CheckBox
                         label='Friday'
                         checked={this.state.fri}
-                        onChange={(fri) => this.setState({fri:!fri})}
+                        onChange={this.onToggleFri.bind(this)}
                     />
                     <CheckBox
                         label='Saturday'
                         checked={this.state.sat}
-                        onChange={(sat) => this.setState({sat:!sat})}
+                        onChange={this.onToggleSat.bind(this)}
                     />
                 </View>
             </View>
