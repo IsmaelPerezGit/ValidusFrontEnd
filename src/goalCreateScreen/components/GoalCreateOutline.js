@@ -8,6 +8,7 @@ import {
     TextInput,
     Picker
 } from 'react-native';
+import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux';
 import axios from 'axios';
 import ChooseDays from './ChooseDays';
@@ -31,8 +32,28 @@ export default class GoalCreate extends Component {
             teamSize: '',
             startDate: '',
             totalDays: '',
-            counter: 0
+            userId: 0,
+            goalId: 0
         }
+    }
+
+    componentWillMount() {
+        this.getUser();
+        this.getGoal();
+    }
+
+    getUser() {
+        axios.get('http://localhost:3000/users/' + firebase.auth().currentUser.uid)
+            .then(res => {
+                this.setState({userId: res.data.id});
+            })
+    }
+
+    getGoal() {
+        axios.get('http://localhost:3000/goals/' + this.state.userId)
+            .then(res => {
+                this.setState({goalId: res.data[0].id});
+            })
     }
 
     onTogglesun() {
@@ -62,9 +83,9 @@ export default class GoalCreate extends Component {
     onTogglesat() {
         this.setState({sat: !this.state.sat})
     }
-    
+
     onButtonPress() {
-        const {target, weeks, sun, mon, tues, wed, thurs, fri, sat, teamSize, startDate} = this.state;
+        const {target, weeks, sun, mon, tues, wed, thurs, fri, sat, teamSize, startDate, userId} = this.state;
         return (axios.post('http://localhost:3000/goals/new', {
             target: target,
             start_date: startDate,
@@ -76,13 +97,24 @@ export default class GoalCreate extends Component {
             thurs: thurs,
             fri: fri,
             sat: sat,
-            team_size: teamSize
+            team_size: teamSize,
+            user_id: userId,
         }))
+            .then(() => {
+            const {userId, goalId} = this.state;
+                axios.post('http://localhost:3000/teams/new', {
+                    user_id: userId,
+                    goal_id: goalId
+                })
+            })
             .then(() => Actions.userProfile());
     }
 
     render() {
-        console.log(this.state)
+        console.log('this is all state: ' + this.state);
+        console.log('this is the user id: ' + this.state.userId);
+        console.log('this is the goal id: ' + this.state.goalId);
+
         return (
             <ScrollView>
                 <View style={styles.viewStyle}>

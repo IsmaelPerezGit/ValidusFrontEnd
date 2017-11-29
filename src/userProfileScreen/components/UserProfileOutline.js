@@ -23,10 +23,8 @@ export default class UserProfile extends Component {
     }
 
     componentWillMount() {
-        //this.getUserId();
         this.getUser();
         this.date();
-        console.log(`user token for profile page: ${firebase.auth().currentUser.uid}`);
     }
 
     date() {
@@ -45,8 +43,6 @@ export default class UserProfile extends Component {
     }
 
     render() {
-        // console.log('user id: ' + this.state.userId.id);
-        // console.log('this is the user info: ' + this.state.user);
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
