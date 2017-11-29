@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 10
     },
-})
+});

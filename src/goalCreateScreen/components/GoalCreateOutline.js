@@ -29,7 +29,9 @@ export default class GoalCreate extends Component {
             fri: false,
             sat: false,
             teamSize: '',
-            startDate: ''
+            startDate: '',
+            totalDays: '',
+            counter: 0
         }
     }
 
@@ -60,10 +62,10 @@ export default class GoalCreate extends Component {
     onTogglesat() {
         this.setState({sat: !this.state.sat})
     }
-
+    
     onButtonPress() {
         const {target, weeks, sun, mon, tues, wed, thurs, fri, sat, teamSize, startDate} = this.state;
-       return (axios.post('http://localhost:3000/goals/new', {
+        return (axios.post('http://localhost:3000/goals/new', {
             target: target,
             start_date: startDate,
             weeks: weeks,
@@ -76,7 +78,7 @@ export default class GoalCreate extends Component {
             sat: sat,
             team_size: teamSize
         }))
-    .then(() => Actions.userProfile());
+            .then(() => Actions.userProfile());
     }
 
     render() {
@@ -192,7 +194,9 @@ export default class GoalCreate extends Component {
                     <View style={styles.createGoalButtonCont}>
                         <TouchableOpacity
                             style={styles.createGoalButton}
-                            onPress={() => {this.onButtonPress()}}
+                            onPress={() => {
+                                this.onButtonPress()
+                            }}
                             color='silver'>
                             <Text style={styles.createGoalButtonText}>Create Goal</Text>
                         </TouchableOpacity>
