@@ -21,62 +21,62 @@ export default class GoalCreate extends Component {
         this.state = {
             target: '',
             weeks: '',
-            Sun: false,
-            Mon: false,
-            Tues: false,
-            Wed: false,
-            Thurs: false,
-            Fri: false,
-            Sat: false,
-            teamSize: 0,
+            sun: false,
+            mon: false,
+            tues: false,
+            wed: false,
+            thurs: false,
+            fri: false,
+            sat: false,
+            teamSize: '',
             startDate: ''
         }
     }
 
-    onToggleSun() {
-        this.setState({Sun: !this.state.Sun})
+    onTogglesun() {
+        this.setState({sun: !this.state.sun})
     }
 
-    onToggleMon() {
-        this.setState({Mon: !this.state.Mon})
+    onTogglemon() {
+        this.setState({mon: !this.state.mon})
     }
 
-    onToggleTues() {
-        this.setState({Tues: !this.state.Tues})
+    onToggletues() {
+        this.setState({tues: !this.state.tues})
     }
 
-    onToggleWed() {
-        this.setState({Wed: !this.state.Wed})
+    onTogglewed() {
+        this.setState({wed: !this.state.wed})
     }
 
-    onToggleThurs() {
-        this.setState({Thurs: !this.state.Thurs})
+    onTogglethurs() {
+        this.setState({thurs: !this.state.thurs})
     }
 
-    onToggleFri() {
-        this.setState({Fri: !this.state.Fri})
+    onTogglefri() {
+        this.setState({fri: !this.state.fri})
     }
 
-    onToggleSat() {
-        this.setState({Sat: !this.state.Sat})
+    onTogglesat() {
+        this.setState({sat: !this.state.sat})
     }
 
-    onButtonClick() {
-        const {target, weeks, Sun, Mon, Tues, Wed, Thurs, Fri, Sat, teamSize, startDate} = this.state;
-        axios.post('http://localhost:3000/goals/new', {
+    onButtonPress() {
+        const {target, weeks, sun, mon, tues, wed, thurs, fri, sat, teamSize, startDate} = this.state;
+       return (axios.post('http://localhost:3000/goals/new', {
             target: target,
-            weeks: weeks,
             start_date: startDate,
-            team_size: teamSize,
-            Mon: Mon,
-            Tues: Tues,
-            Wed: Wed,
-            Thurs: Thurs,
-            Fri: Fri,
-            Sat: Sat,
-            Sun: Sun,
-        })
-            .then(() => Actions.userProfile())
+            weeks: weeks,
+            sun: sun,
+            mon: mon,
+            tues: tues,
+            wed: wed,
+            thurs: thurs,
+            fri: fri,
+            sat: sat,
+            team_size: teamSize
+        }))
+    .then(() => Actions.userProfile());
     }
 
     render() {
@@ -128,13 +128,13 @@ export default class GoalCreate extends Component {
                             onChangeText={(weeks) => this.setState({weeks})}/>
                     </View>
                     <ChooseDays
-                        toggleSun={this.onToggleSun.bind(this)}
-                        toggleMon={this.onToggleMon.bind(this)}
-                        toggleTues={this.onToggleTues.bind(this)}
-                        toggleWed={this.onToggleWed.bind(this)}
-                        toggleThurs={this.onToggleThurs.bind(this)}
-                        toggleFri={this.onToggleFri.bind(this)}
-                        toggleSat={this.onToggleSat.bind(this)}/>
+                        togglesun={this.onTogglesun.bind(this)}
+                        togglemon={this.onTogglemon.bind(this)}
+                        toggletues={this.onToggletues.bind(this)}
+                        togglewed={this.onTogglewed.bind(this)}
+                        togglethurs={this.onTogglethurs.bind(this)}
+                        togglefri={this.onTogglefri.bind(this)}
+                        togglesat={this.onTogglesat.bind(this)}/>
                     <View style={styles.teamSizeComponentCont}>
                         <View>
                             <View style={styles.sizeLimitTextCont}>
@@ -192,9 +192,7 @@ export default class GoalCreate extends Component {
                     <View style={styles.createGoalButtonCont}>
                         <TouchableOpacity
                             style={styles.createGoalButton}
-                            onPress={() => {
-                                this.onButtonClick()
-                            }}
+                            onPress={() => {this.onButtonPress()}}
                             color='silver'>
                             <Text style={styles.createGoalButtonText}>Create Goal</Text>
                         </TouchableOpacity>
