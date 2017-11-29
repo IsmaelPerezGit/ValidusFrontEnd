@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 
 class Team extends Component {
@@ -40,16 +41,15 @@ class Team extends Component {
                             <TouchableOpacity
                                 style={styles.JoinOrViewButton}
                                 onPress={printThing = () => {
-                                    alert("This does nothing")
+                                    alert("Successfully joined team")
                                 }}
                                 color='silver'>
                                 <Text style={styles.buttonText}>Join Team</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={styles.JoinOrViewButton}
-                                onPress={printThing = () => {
-                                    alert("This does nothing")
-                                }}
+                                onPress={ () => {Actions.team()}
+                                }
                                 color='silver'>
                                 <Text style={styles.buttonText}>View Team</Text>
                             </TouchableOpacity>

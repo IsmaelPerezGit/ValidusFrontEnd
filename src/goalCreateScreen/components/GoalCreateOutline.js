@@ -9,6 +9,7 @@ import {
     Picker
 } from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import axios from 'axios';
 import ChooseDays from './ChooseDays';
 import TeamSize from './TeamSizeLimit'
 import StartDateForm from './StartDateForm';
@@ -18,53 +19,66 @@ export default class GoalCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            target: '',
             weeks: '',
-            sun: false,
-            mon: false,
-            tues: false,
-            wed: false,
-            thurs: false,
-            fri: false,
-            sat: false,
+            Sun: false,
+            Mon: false,
+            Tues: false,
+            Wed: false,
+            Thurs: false,
+            Fri: false,
+            Sat: false,
             teamSize: 0,
             startDate: ''
         }
     }
+
     onToggleSun() {
-        this.setState({
-            sun: !this.state.sun
-        })
+        this.setState({Sun: !this.state.Sun})
     }
+
     onToggleMon() {
-        this.setState({
-            mon: !this.state.mon
-        })
+        this.setState({Mon: !this.state.Mon})
     }
+
     onToggleTues() {
-        this.setState({
-            tues: !this.state.tues
-        })
+        this.setState({Tues: !this.state.Tues})
     }
+
     onToggleWed() {
-        this.setState({
-            wed: !this.state.wed
-        })
+        this.setState({Wed: !this.state.Wed})
     }
+
     onToggleThurs() {
-        this.setState({
-            thurs: !this.state.thurs
-        })
+        this.setState({Thurs: !this.state.Thurs})
     }
+
     onToggleFri() {
-        this.setState({
-            fri: !this.state.fri
-        })
+        this.setState({Fri: !this.state.Fri})
     }
+
     onToggleSat() {
-        this.setState({
-            sat: !this.state.sat
-        })
+        this.setState({Sat: !this.state.Sat})
     }
+
+    onButtonClick() {
+        const {target, weeks, Sun, Mon, Tues, Wed, Thurs, Fri, Sat, teamSize, startDate} = this.state;
+        axios.post('http://localhost:3000/goals/new', {
+            target: target,
+            weeks: weeks,
+            start_date: startDate,
+            team_size: teamSize,
+            Mon: Mon,
+            Tues: Tues,
+            Wed: Wed,
+            Thurs: Thurs,
+            Fri: Fri,
+            Sat: Sat,
+            Sun: Sun,
+        })
+            .then(() => Actions.userProfile())
+    }
+
     render() {
         console.log(this.state)
         return (
@@ -74,6 +88,12 @@ export default class GoalCreate extends Component {
                         <Text style={styles.title}>Create Your Goal</Text>
                     </View>
                     <View style={styles.formCont}>
+                        <TextInput
+                            placeholder="Enter Goal: (example:'Run 4 miles')"
+                            placeholderTextColor='grey'
+                            style={styles.weeksInput}
+                            value={this.state.target}
+                            onChangeText={(target) => this.setState({target})}/>
                         <View style={styles.datePickerCont}>
                             <DatePicker
                                 style={styles.datePicker}
@@ -97,7 +117,7 @@ export default class GoalCreate extends Component {
                                     }
                                 }}
                                 onDateChange={(date) => {
-                                    this.setState({date: date})
+                                    this.setState({startDate: date})
                                 }}/>
                         </View>
                         <TextInput
@@ -123,8 +143,8 @@ export default class GoalCreate extends Component {
                             <View style={styles.pickerCont}>
                                 <Picker
                                     style={styles.picker}
-                                    selectedValue = {this.state.teamSize}
-                                    onValueChange = {(itemValue, itemIndex) => this.setState({teamSize:itemValue})}>
+                                    selectedValue={this.state.teamSize}
+                                    onValueChange={(itemValue, itemIndex) => this.setState({teamSize: itemValue})}>
                                     <Picker.Item
                                         color='white'
                                         label='1'
@@ -173,7 +193,8 @@ export default class GoalCreate extends Component {
                         <TouchableOpacity
                             style={styles.createGoalButton}
                             onPress={() => {
-                                Actions.userProfile()}}
+                                this.onButtonClick()
+                            }}
                             color='silver'>
                             <Text style={styles.createGoalButtonText}>Create Goal</Text>
                         </TouchableOpacity>
