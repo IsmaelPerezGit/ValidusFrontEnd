@@ -22,7 +22,7 @@ export default class UserProfile extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getUser();
         this.date();
     }

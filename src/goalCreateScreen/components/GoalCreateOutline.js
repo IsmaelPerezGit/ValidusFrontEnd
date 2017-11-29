@@ -33,7 +33,8 @@ export default class GoalCreate extends Component {
             startDate: '',
             totalDays: '',
             userId: 0,
-            goalId: 0
+            goalId: 0,
+            days: 0
         }
     }
 
@@ -52,7 +53,12 @@ export default class GoalCreate extends Component {
     getGoal() {
         axios.get('http://localhost:3000/goals/' + this.state.userId)
             .then(res => {
-                this.setState({goalId: res.data[0].id});
+                res.data.map((goal) => {
+                    if (goal.user_id == this.state.userId) {
+                        return this.setState({ goalId:goal.id})
+                    }
+                })
+                // this.setState({goalId: res.data[0].id});
             })
     }
 
@@ -84,7 +90,34 @@ export default class GoalCreate extends Component {
         this.setState({sat: !this.state.sat})
     }
 
+    getTotalDays() {
+       let days = 0;
+       if (this.state.sun == true) {
+           days ++
+       }
+        if (this.state.mon == true) {
+            days ++
+        }
+        if (this.state.tues == true) {
+            days ++
+        }
+        if (this.state.wed == true) {
+            days ++
+        }
+        if (this.state.thurs == true) {
+            days ++
+        }
+        if (this.state.fri == true) {
+            days ++
+        }
+        if (this.state.sat == true) {
+            days ++
+        }
+        return days * this.state.weeks
+    }
+
     onButtonPress() {
+        let days = this.getTotalDays();
         const {target, weeks, sun, mon, tues, wed, thurs, fri, sat, teamSize, startDate, userId} = this.state;
         return (axios.post('http://localhost:3000/goals/new', {
             target: target,
@@ -99,6 +132,7 @@ export default class GoalCreate extends Component {
             sat: sat,
             team_size: teamSize,
             user_id: userId,
+            days: days
         }))
             .then(() => {
             const {userId, goalId} = this.state;
@@ -114,6 +148,7 @@ export default class GoalCreate extends Component {
         console.log('this is all state: ' + this.state);
         console.log('this is the user id: ' + this.state.userId);
         console.log('this is the goal id: ' + this.state.goalId);
+        console.log('Total days: ' + this.state.days);
 
         return (
             <ScrollView>
