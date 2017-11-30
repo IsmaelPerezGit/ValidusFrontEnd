@@ -20,7 +20,7 @@ class UserProgress extends Component{
                 </View>
                 <View style={styles.progressBarCont}>
                     <Progress.Bar
-                        progress={.5}
+                        progress={this.props.avg}
                         height={20}
                         animated={true}
                         color={'#b21726'}

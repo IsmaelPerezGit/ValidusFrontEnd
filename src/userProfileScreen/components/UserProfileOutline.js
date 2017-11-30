@@ -20,7 +20,9 @@ export default class UserProfile extends Component {
             user: [],
             userId: [],
             userGoal: [],
-            completedWktDays: 0
+            numDaysLeft:0,
+            completedWktDays: 0,
+            avg: 0
         };
     }
 
@@ -28,6 +30,7 @@ export default class UserProfile extends Component {
         this.getUser();
         //this.date();
         this.getUserGoal();
+        this.getUserDaysLeft();
     }
 
     date() {
@@ -56,15 +59,33 @@ export default class UserProfile extends Component {
             });
     }
 
+    getUserDaysLeft() {
+        axios.get('http://localhost:3000/goals/')
+            .then((res) => {
+                res.data.map(goal => {
+                    if (goal.user_id == this.state.user.id) {
+                        return this.setState({numDaysLeft: goal.days});
+                    }
+                })
+            });
+    }
+
+    getAverage() {
+        if (this.state.numDaysLeft !== 0) {
+            return this.state.completedWktDays / this.state.numDaysLeft
+        }
+    }
+
     handleCompleteWorkoutPress() {
-        return this.setState({
+        this.setState({
             userGoal: this.state.userGoal - 1,
-            completedWktDays:this.state.completedWktDays + 1
+            completedWktDays:this.state.completedWktDays + 1,
         })
+        this.getAverage()
     }
 
     render() {
-        //console.log('this is the user goal: ' + this.state.completedWktDays);
+        console.log('this is the avg: ' + this.getAverage())
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
@@ -72,6 +93,7 @@ export default class UserProfile extends Component {
                 </View>
                 {!this.state.user ? <Text>loading...</Text> :
                     <UserProgress
+                        avg={this.getAverage()}
                         userGoal={this.state.userGoal}
                         user={this.state.user}
                         completedDays={this.state.completedWktDays}
