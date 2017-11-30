@@ -51,11 +51,11 @@ export default class GoalCreate extends Component {
     }
 
     getGoal() {
-        axios.get('http://localhost:3000/goals/' + this.state.userId)
+        axios.get('http://localhost:3000/goals/')
             .then(res => {
                 res.data.map((goal) => {
                     if (goal.user_id == this.state.userId) {
-                        return this.setState({ goalId:goal.id})
+                        return this.setState({ goalId:goal.id+1})
                     }
                 })
             })
@@ -134,6 +134,7 @@ export default class GoalCreate extends Component {
             days: days
         }))
             .then(() => {
+
             const {userId, goalId} = this.state;
                 axios.post('http://localhost:3000/teams/new', {
                     user_id: userId,
@@ -144,10 +145,10 @@ export default class GoalCreate extends Component {
     }
 
     render() {
-        console.log('this is all state: ' + this.state);
-        console.log('this is the user id: ' + this.state.userId);
-        console.log('this is the goal id: ' + this.state.goalId);
-        console.log('Total days: ' + this.state.days);
+        // console.log('this is all state: ' + this.state);
+        // console.log('this is the user id: ' + this.state.userId);
+        // console.log('this is the goal id: ' + this.state.goalId);
+        // console.log('Total days: ' + this.state.days);
 
         return (
             <ScrollView>

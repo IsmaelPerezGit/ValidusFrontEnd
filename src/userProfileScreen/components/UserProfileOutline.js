@@ -25,7 +25,7 @@ export default class UserProfile extends Component {
 
     componentWillMount() {
         this.getUser();
-        this.date();
+        //this.date();
         this.getUserGoal();
     }
 
@@ -49,7 +49,6 @@ export default class UserProfile extends Component {
             .then((res) => {
                 res.data.map(goal => {
                     if (goal.user_id == this.state.user.id) {
-                        // console.log(goal.days);
                         return this.setState({userGoal: goal.days});
                     }
                 })
@@ -61,7 +60,7 @@ export default class UserProfile extends Component {
     }
 
     render() {
-        console.log('this is the user goal: ' + this.state.userGoal);
+       // console.log('this is the user goal: ' + this.state.userGoal);
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
