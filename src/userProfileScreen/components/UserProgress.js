@@ -5,8 +5,12 @@ import * as Progress from 'react-native-progress';
 class UserProgress extends Component{
     constructor(props) {
         super(props);
+        this.state = {
+            avg: 0
+        }
     }
-    render(props) {
+
+    render() {
         return (
             <View>
                 <View style={styles.nameCont}>

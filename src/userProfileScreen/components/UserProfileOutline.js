@@ -19,7 +19,8 @@ export default class UserProfile extends Component {
             user_token: '',
             user: [],
             userId: [],
-            userGoal: []
+            userGoal: [],
+            completedWktDays: 0
         };
     }
 
@@ -56,18 +57,25 @@ export default class UserProfile extends Component {
     }
 
     handleCompleteWorkoutPress() {
-        return this.setState({userGoal: this.state.userGoal - 1})
+        return this.setState({
+            userGoal: this.state.userGoal - 1,
+            completedWktDays:this.state.completedWktDays + 1
+        })
     }
 
     render() {
-       // console.log('this is the user goal: ' + this.state.userGoal);
+        //console.log('this is the user goal: ' + this.state.completedWktDays);
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
                 {!this.state.user ? <Text>loading...</Text> :
-                    <UserProgress userGoal={this.state.userGoal} user={this.state.user}/>}
+                    <UserProgress
+                        userGoal={this.state.userGoal}
+                        user={this.state.user}
+                        completedDays={this.state.completedWktDays}
+                    />}
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>
