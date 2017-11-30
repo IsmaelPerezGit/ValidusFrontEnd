@@ -53,9 +53,9 @@ export default class GoalCreate extends Component {
     getGoal() {
         axios.get('http://localhost:3000/goals/')
             .then(res => {
-                res.data.map((goal) => {
+               return res.data.map((goal) => {
                     if (goal.user_id == this.state.userId) {
-                        return this.setState({ goalId:goal.id+1})
+                        return this.setState({ goalId:goal.id})
                     }
                 })
             })
