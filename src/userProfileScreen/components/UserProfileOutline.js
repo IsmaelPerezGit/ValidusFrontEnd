@@ -25,7 +25,7 @@ export default class UserProfile extends Component {
 
     componentWillMount() {
         this.getUser();
-        //this.date();
+        this.date();
         this.getUserGoal();
     }
 
@@ -40,17 +40,16 @@ export default class UserProfile extends Component {
     getUser() {
         axios.get('http://localhost:3000/users/' + firebase.auth().currentUser.uid)
             .then(res => {
-               this.setState({user: res.data});
+                this.setState({user: res.data});
             });
     }
 
     getUserGoal() {
         axios.get('http://localhost:3000/goals/')
             .then((res) => {
-                //console.log('WWWOOOOWWWWWW: '+JSON.stringify(res.data))
                 res.data.map(goal => {
-                    if(goal.user_id == this.state.user.id) {
-                       // console.log(goal.days);
+                    if (goal.user_id == this.state.user.id) {
+                        // console.log(goal.days);
                         return this.setState({userGoal: goal.days});
                     }
                 })
@@ -58,7 +57,7 @@ export default class UserProfile extends Component {
     }
 
     handleCompleteWorkoutPress() {
-        return this.setState({userGoal: this.state.userGoal-1})
+        return this.setState({userGoal: this.state.userGoal - 1})
     }
 
     render() {
@@ -78,13 +77,13 @@ export default class UserProfile extends Component {
                         style={styles.completeWorkoutButton}
                         onPress={() => {
                             this.handleCompleteWorkoutPress();
-                            alert("Your doing great! Keep it up!" );
+                            alert("Your doing great! Keep it up!");
                         }}
                         color='silver'>
                         <Text style={styles.signUpText}>Complete Workout</Text>
                     </TouchableOpacity>
                 </View>
-                <TeamAndGoalBtns/>
+                <TeamAndGoalBtns userGoal={this.state.userGoal}/>
             </ScrollView>
         );
     }
