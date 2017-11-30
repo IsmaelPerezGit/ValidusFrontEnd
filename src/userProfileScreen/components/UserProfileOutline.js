@@ -57,6 +57,10 @@ export default class UserProfile extends Component {
             });
     }
 
+    handleCompleteWorkoutPress() {
+        return this.setState({userGoal: this.state.userGoal-1})
+    }
+
     render() {
         console.log('this is the user goal: ' + this.state.userGoal);
         return (
@@ -73,7 +77,8 @@ export default class UserProfile extends Component {
                     <TouchableOpacity
                         style={styles.completeWorkoutButton}
                         onPress={() => {
-                            alert("This does nothing")
+                            this.handleCompleteWorkoutPress();
+                            alert("Your doing great! Keep it up!" );
                         }}
                         color='silver'>
                         <Text style={styles.signUpText}>Complete Workout</Text>

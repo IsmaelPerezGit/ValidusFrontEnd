@@ -18,7 +18,7 @@ const UserProgress = (props) => {
                     color={'#b21726'}
                     borderWidth={3}/>
                 <View style={styles.daysLeftCont}>
-                    <Text style={styles.daysLeftText}>Days Left: 7</Text>
+                    <Text style={styles.daysLeftText}>Days Left: {props.userGoal}</Text>
                 </View>
             </View>
         </View>
