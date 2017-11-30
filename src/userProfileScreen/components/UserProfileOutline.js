@@ -18,13 +18,15 @@ export default class UserProfile extends Component {
             curTime: null,
             user_token: '',
             user: [],
-            userId: []
+            userId: [],
+            userGoal: []
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getUser();
-        this.date();
+        //this.date();
+        this.getUserGoal();
     }
 
     date() {
@@ -38,17 +40,32 @@ export default class UserProfile extends Component {
     getUser() {
         axios.get('http://localhost:3000/users/' + firebase.auth().currentUser.uid)
             .then(res => {
-                this.setState({user: res.data});
-            })
+               this.setState({user: res.data});
+            });
+    }
+
+    getUserGoal() {
+        axios.get('http://localhost:3000/goals/')
+            .then((res) => {
+                //console.log('WWWOOOOWWWWWW: '+JSON.stringify(res.data))
+                res.data.map(goal => {
+                    if(goal.user_id == this.state.user.id) {
+                       // console.log(goal.days);
+                        return this.setState({userGoal: goal.days});
+                    }
+                })
+            });
     }
 
     render() {
+        console.log('this is the user goal: ' + this.state.userGoal);
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-                {!this.state.user ? <Text>loading...</Text> : <UserProgress user={this.state.user}/>}
+                {!this.state.user ? <Text>loading...</Text> :
+                    <UserProgress userGoal={this.state.userGoal} user={this.state.user}/>}
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>

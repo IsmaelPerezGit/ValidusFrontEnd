@@ -58,7 +58,6 @@ export default class GoalCreate extends Component {
                         return this.setState({ goalId:goal.id})
                     }
                 })
-                // this.setState({goalId: res.data[0].id});
             })
     }
 
