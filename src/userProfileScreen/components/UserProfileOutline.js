@@ -18,13 +18,19 @@ export default class UserProfile extends Component {
             curTime: null,
             user_token: '',
             user: [],
-            userId: []
+            userId: [],
+            userGoal: [],
+            numDaysLeft:0,
+            completedWktDays: 0,
+            avg: 0
         };
     }
 
     componentWillMount() {
         this.getUser();
-        this.date();
+        //this.date();
+        this.getUserGoal();
+        this.getUserDaysLeft();
     }
 
     date() {
@@ -39,16 +45,59 @@ export default class UserProfile extends Component {
         axios.get('http://localhost:3000/users/' + firebase.auth().currentUser.uid)
             .then(res => {
                 this.setState({user: res.data});
-            })
+            });
+    }
+
+    getUserGoal() {
+        axios.get('http://localhost:3000/goals/')
+            .then((res) => {
+                res.data.map(goal => {
+                    if (goal.user_id == this.state.user.id) {
+                        return this.setState({userGoal: goal.days});
+                    }
+                })
+            });
+    }
+
+    getUserDaysLeft() {
+        axios.get('http://localhost:3000/goals/')
+            .then((res) => {
+                res.data.map(goal => {
+                    if (goal.user_id == this.state.user.id) {
+                        return this.setState({numDaysLeft: goal.days});
+                    }
+                })
+            });
+    }
+
+    getAverage() {
+        if (this.state.numDaysLeft !== 0) {
+            return this.state.completedWktDays / this.state.numDaysLeft
+        }
+    }
+
+    handleCompleteWorkoutPress() {
+        this.setState({
+            userGoal: this.state.userGoal - 1,
+            completedWktDays:this.state.completedWktDays + 1,
+        })
+        this.getAverage()
     }
 
     render() {
+        console.log('this is the avg: ' + this.getAverage())
         return (
             <ScrollView style={styles.scrollCont}>
                 <View style={styles.titleCont}>
                     <Text style={styles.title}>Your Progress</Text>
                 </View>
-                {!this.state.user ? <Text>loading...</Text> : <UserProgress user={this.state.user}/>}
+                {!this.state.user ? <Text>loading...</Text> :
+                    <UserProgress
+                        avg={this.getAverage()}
+                        userGoal={this.state.userGoal}
+                        user={this.state.user}
+                        completedDays={this.state.completedWktDays}
+                    />}
                 <View style={styles.dateCont}>
                     <Text style={styles.date}>{this.state.curTime}</Text>
                 </View>
@@ -56,13 +105,14 @@ export default class UserProfile extends Component {
                     <TouchableOpacity
                         style={styles.completeWorkoutButton}
                         onPress={() => {
-                            alert("This does nothing")
+                            this.handleCompleteWorkoutPress();
+                            alert("Your doing great! Keep it up!");
                         }}
                         color='silver'>
                         <Text style={styles.signUpText}>Complete Workout</Text>
                     </TouchableOpacity>
                 </View>
-                <TeamAndGoalBtns/>
+                <TeamAndGoalBtns userGoal={this.state.userGoal}/>
             </ScrollView>
         );
     }

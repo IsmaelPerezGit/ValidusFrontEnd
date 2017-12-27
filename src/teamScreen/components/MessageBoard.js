@@ -8,9 +8,17 @@ import {
 
 class MessageBoard extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state={
+             message: '',
+            text: ''
+        }
+    }
+
     onButtonPress() {
-        const { email, password } = this.state;
-        alert("This does nothing");
+        const { text, message } = this.state;
+        this.setState({message: this.props.user.username+ ": " + text, text: ''})
     }
 
     render () {
@@ -18,15 +26,15 @@ class MessageBoard extends Component {
             <View style={styles.messageBoardCont}>
                 <View style={styles.textAreaCont}>
                     <View style={styles.messageBoardTextArea}>
-                        <Text style={styles.messageBoardText}>BIll: This is where the messages are going to
-                            display</Text>
+                        <Text style={styles.messageBoardText}>{this.state.message}</Text>
                     </View>
                 </View>
                 <View style={styles.messageFormCont}>
                     <TextInput
                         style={styles.messageForm}
                         onChangeText={(text) => this.setState({text})}
-                        value={'type message here'}/>
+                        placeholder={'type message here'}
+                        />
                     <View style={styles.submitMessageBtnCont}>
                         <TouchableOpacity
                             style={styles.submitButton}
@@ -45,7 +53,7 @@ export default MessageBoard;
 const styles = StyleSheet.create({
     messageBoardCont: {
         backgroundColor: '#b21726',
-        height: '100%',
+        height: '80%',
         width: '100%',
         marginTop: '7%',
     },

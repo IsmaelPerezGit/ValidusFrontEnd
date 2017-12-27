@@ -14,7 +14,7 @@ import SignUpButton from './SignUpButton';
 
 export default class Landing extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({loggedIn: true});
